@@ -23,8 +23,9 @@ body {
 }
 
 .hamburger-title-container {
+  box-sizing: border-box;
   text-align: center;
-  height: 71px;
+  height: 75px;
   border: var(--hamburger-border);
 }
 
