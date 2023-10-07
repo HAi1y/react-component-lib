@@ -21,9 +21,10 @@ export const Navigation = ({ navigation, isHidden }: NavigationProps) => {
       {navigation.map((section: NavigationSection, index1:number) => {
         return (
           <ul key={"ul-" + index1} >
-            <li>
+            {section.heading &&<li>
               <h2>{section.heading}</h2>
-            </li>
+            </li>}
+            
             {section.children.map((element: NavigationElement, index: number) => {
 
               const key = "" + index1 + "-" + index;

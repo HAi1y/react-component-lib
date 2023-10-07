@@ -15,6 +15,16 @@ function ExampleList() {
 function ExampleHamburgerMenu() {
 
   const navigation: Array<NavigationSection> = [{
+    heading: "",
+    children: [{
+      label: "Home",
+      url: "/"
+    } ,{
+      label: "About",
+      url: "https://google.com"
+    }
+  ]
+  },{
     heading: "Services",
     children: [{
       label: "Accessibility Consulting",
@@ -26,8 +36,8 @@ function ExampleHamburgerMenu() {
   },{
     heading: "Products",
     children: [{
-      label: "VoiceOver Simulator",
-      url: "/"
+      label: "VoiceOver Simulator (Coming Soon)",
+      url: "/hamburger-menu/android"
     }]
   }];
 
@@ -38,6 +48,25 @@ function ExampleHamburgerMenu() {
   )
 }
 
+function ExampleHamburgerMenuAndroid() {
+
+  const navigation: Array<NavigationSection> = [{
+    heading: "",
+    children: [{
+      label: "MobA11y",
+      url: "/hamburger-menu/"
+    }
+  ]
+  }];
+
+  return ( 
+    <>
+      <HamburgerMenu navigation={navigation} title={"MobA11y - VoiceOver"} />
+    </>
+  )
+}
+
+
 const App = () => {
   return (
     <div>
@@ -45,6 +74,8 @@ const App = () => {
         <Routes>
           <Route path="/" element={ExampleList()} />
           <Route path="/hamburger-menu" element={ExampleHamburgerMenu()} />
+          <Route path="/hamburger-menu/android" element={ExampleHamburgerMenuAndroid()} />
+          <Route path="/hamburger-menu/blog" element={ExampleHamburgerMenu()} />
         </Routes>
       </BrowserRouter>
     </div>
