@@ -2,14 +2,14 @@
   --hamburger-color-primary: white;
   --hamburger-color-on-primary: black;
   --hamburger-color-accent: var(--hamburger-color-on-primary);
-  --hamburger-height: 75px;
+  --hamburger-height: 50px;
   --hamburger-border: 2px solid var(--hamburger-color-accent);
   --font-family-hamburger: "Google Sans",Roboto,RobotoDraft,Helvetica,Arial,sans-serif;
 }
 
 body {
   margin: 0;
-  background-color: black;
+  background-color: blueviolet;
 }
 
 .hamburger-menu {
@@ -23,6 +23,7 @@ body {
 }
 
 .hamburger-title-container {
+  display: flex;
   box-sizing: border-box;
   text-align: center;
   height: var(--hamburger-height);
@@ -43,9 +44,7 @@ body {
 
 .title-bar h1 {
   margin: auto;
-  font-size: 2.5em;
   font-weight: 300;
-  padding: 12px;
 }
 
 nav {
@@ -128,7 +127,7 @@ button.hamburger {
 }
 
 button.three-dots {
-  background-image: radial-gradient(circle, var(--hamburger-color-on-primary) 8px, transparent 9px);
+  background-image: radial-gradient(circle, var(--hamburger-color-on-primary) 3px, transparent 5px);
   background-size: 100% 33.33%;
   background-color: var(--hamburger-color-primary);
   border: 2px solid var(--hamburger-color-accent);
@@ -146,17 +145,17 @@ button.three-dots {
 }
 
 .hamburger-line1 {
-  stroke-dasharray: 60 207;
+  stroke-dasharray: 55 207;
   stroke-width: 6;
 }
 
 .hamburger-line2 {
-  stroke-dasharray: 60 60;
+  stroke-dasharray: 55 60;
   stroke-width: 6;
 }
 
 .hamburger-line3 {
-  stroke-dasharray: 60 207;
+  stroke-dasharray: 55 207;
   stroke-width: 6;
 }
 
