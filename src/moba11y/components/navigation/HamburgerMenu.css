@@ -12,6 +12,14 @@ body {
   background-color: blueviolet;
 }
 
+.hamburger-menu button:focus,
+.hamburger-menu a:focus {
+  border: 4px dashed var(--hamburger-color-on-primary);
+  outline: none;
+}
+
+
+
 .hamburger-menu {
   position: absolute;
   left: 5%;

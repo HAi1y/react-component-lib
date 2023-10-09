@@ -32,11 +32,12 @@ export const Navigation = ({ navigation, isHidden }: NavigationProps) => {
 
               return (
                 <li key={"li-" + key} className={element.active ? "active" : "inactive"}>
-                  {element.active ? 
-                    <span key={"a-" + key} className={element.active ? "active" : ""}>{element.label}</span> :
-                    <a href={element.url} key={"a-" + key} className={element.active ? "active" : ""}>{element.label}</a>
-                  }
-                  
+                  <a href={element.url}
+                    key={"a-" + key}
+                    className={element.active ? "active" : ""}
+                    aria-current={element.active ? "page" : undefined}>
+                    {element.label}
+                  </a>
                 </li>)
             })}
           </ul>)
