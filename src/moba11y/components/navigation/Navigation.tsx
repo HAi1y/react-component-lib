@@ -23,7 +23,7 @@ export const Navigation = ({ navigation, isHidden }: NavigationProps) => {
         return (
           <ul key={"ul-" + index1} >
             {section.heading &&<li>
-              <h2>{section.heading}</h2>
+              <h3>{section.heading}</h3>
             </li>}
             
             {section.children.map((element: NavigationElement, index: number) => {

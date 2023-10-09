@@ -44,22 +44,23 @@ body {
   height: auto;
 }
 
-.hamburger-menu .title-bar h1 {
+.hamburger-menu .title-bar h2 {
   margin: auto;
   font-weight: 300;
+  color: var(--hamburger-color-on-primary);
 }
 
 .hamburger-menu nav {
   border-left: var(--hamburger-border);
   border-right: var(--hamburger-border);
-  max-width: 22em;
+  min-width: 22em;
 }
 
 .hamburger-menu nav ul {
   border-bottom: var(--hamburger-border);
 }
 
-.hamburger-menu nav h2 {
+.hamburger-menu nav h3 {
   font-size: 1em;
   font-weight: 500;
   padding-left: 1em;
@@ -108,7 +109,7 @@ body {
 }
 
 .hamburger-menu nav li:has(a):hover {
-  outline: 2px double var(--hamburger-color-on-primary);
+  outline: 2px solid var(--hamburger-color-on-primary);
 }
 
 .mobile {
