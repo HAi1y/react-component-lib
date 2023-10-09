@@ -74,10 +74,11 @@ body {
   padding-left: 1em;
 }
 
-.hamburger-menu nav a {
+.hamburger-menu nav a, .hamburger-menu nav span {
   text-decoration: none;
   color: var(--hamburger-color-on-primary);
   background-color: var(--hamburger-color-primary);
+  margin: .5em;
 }
 
 .hamburger-menu nav a.active, .hamburger-menu nav li.active {
@@ -93,10 +94,6 @@ body {
 
 .hamburger-menu nav>ul li ul.open {
   display: block;
-}
-
-.hamburger-menu nav a, .hamburger-menu nav span {
-  margin: .5em;
 }
 
 .hamburger-menu nav li:has(a), .hamburger-menu nav li:has(span) {
