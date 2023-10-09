@@ -1,7 +1,7 @@
 import * as React from 'react';
 
 export interface ToggleButtonProps {
-  onClick: (isExpanded: boolean) => any;
+  onClick?: (isExpanded: boolean) => any;
   description: string;
   className: string;
 }
@@ -18,11 +18,20 @@ export function ToggleButton({ children, className, description, onClick } : Rea
     var pressed = button.classList.contains('opened');
 
     button.setAttribute('aria-pressed', "" + pressed);
-    onClick(pressed);
+    
+    if (onClick) {
+      onClick(pressed)
+    }
   };
 
   return (
-    <button className={className} onClick={buttonHandler} aria-label={description} aria-pressed={false}>
+    <button className={className}
+      onClick={buttonHandler}
+      aria-label={description}
+      aria-pressed={false}
+      role={typeof onClick === 'undefined' ? "presentation" : "button"}
+      disabled={typeof onClick === 'undefined'}
+    >
       {children}
     </button>
   )

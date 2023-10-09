@@ -15,10 +15,11 @@ function ExampleList() {
 function ExampleHamburgerMenu() {
 
   const navigation: Array<NavigationSection> = [{
-    heading: "",
+    heading: "Site",
     children: [{
       label: "Home",
-      url: "/"
+      url: "/",
+      active: true
     } ,{
       label: "About",
       url: "https://google.com"

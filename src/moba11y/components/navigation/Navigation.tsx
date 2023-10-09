@@ -3,6 +3,7 @@ import * as React from 'react';
 export interface NavigationElement {
   label: string;
   url: string;
+  active?: boolean;
 }
 
 export interface NavigationSection {
@@ -30,8 +31,12 @@ export const Navigation = ({ navigation, isHidden }: NavigationProps) => {
               const key = "" + index1 + "-" + index;
 
               return (
-                <li key={"li-" + key} className={"li-" + key}>
-                  <a href={element.url} key={"a-" + key} className={"a-" + key}>{element.label}</a>
+                <li key={"li-" + key} className={element.active ? "active" : "inactive"}>
+                  {element.active ? 
+                    <span key={"a-" + key} className={element.active ? "active" : ""}>{element.label}</span> :
+                    <a href={element.url} key={"a-" + key} className={element.active ? "active" : ""}>{element.label}</a>
+                  }
+                  
                 </li>)
             })}
           </ul>)
