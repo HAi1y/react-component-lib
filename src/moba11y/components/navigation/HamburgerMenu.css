@@ -14,7 +14,7 @@ body {
 
 .hamburger-menu button:focus,
 .hamburger-menu a:focus {
-  border: 4px dashed var(--hamburger-color-on-primary);
+  border: 2px dashed var(--hamburger-color-on-primary);
   outline: none;
 }
 
