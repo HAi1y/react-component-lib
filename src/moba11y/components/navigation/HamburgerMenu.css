@@ -61,7 +61,7 @@ body {
 .hamburger-menu nav {
   border-left: var(--hamburger-border);
   border-right: var(--hamburger-border);
-  min-width: 22em;
+  width: fit-content;
 }
 
 .hamburger-menu nav ul {
@@ -79,7 +79,11 @@ body {
 
 .hamburger-menu nav a:after {
   content: ">";
-  float: right;
+  padding-left: 1em;
+}
+
+.hamburger-menu nav a.active:after {
+  content: "";
   padding-left: 1em;
 }
 
@@ -116,7 +120,7 @@ body {
   padding: 0;
 }
 
-.hamburger-menu nav li:has(a):hover {
+.hamburger-menu nav a:hover {
   outline: 2px solid var(--hamburger-color-on-primary);
 }
 
