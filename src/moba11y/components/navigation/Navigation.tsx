@@ -16,17 +16,17 @@ export interface NavigationProps {
   isHidden: boolean;
 }
 
-export const Navigation = ({ navigation, isHidden }: NavigationProps) => {
+export const Navigation = ({ navigation = [], isHidden }: NavigationProps) => {
   return (<>
     <nav className={isHidden ? "hidden" : "not-hidden"}>
-      {navigation.map((section: NavigationSection, index1:number) => {
+      {navigation && navigation.map((section: NavigationSection, index1:number) => {
         return (
           <ul key={"ul-" + index1} >
             {section.heading &&<li>
               <h3>{section.heading}</h3>
             </li>}
             
-            {section.children.map((element: NavigationElement, index: number) => {
+            {section.children && section.children.map((element: NavigationElement, index: number) => {
 
               const key = "" + index1 + "-" + index;
 
