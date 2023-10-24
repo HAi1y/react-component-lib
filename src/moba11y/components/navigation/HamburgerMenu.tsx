@@ -44,13 +44,12 @@ export const HamburgerMenu = ({ navigation, title } : HamburgerMenuProps) => {
 
   return (
     <div className="hamburger-menu">
-        <HamburgerIcon onClick={onClick} />
-        
+      <HamburgerIcon onClick={onClick} />  
       <div className={isExpanded ? "title-bar expanded" : "title-bar"}>
         <div className={isExpanded ? "hamburger-title-container expanded" : "hamburger-title-container"}><h2>{title}</h2></div>  
-          <Navigation isHidden={!isExpanded} navigation={navigation} />
-        </div>
-        <ThreeDotsIcon/>
+        <Navigation isHidden={!isExpanded} navigation={navigation} />
+      </div>
+      <ThreeDotsIcon/>
     </div>
   )
 }

@@ -1,0 +1,12 @@
+@import "./components/navigation/HamburgerMenu.css";
+@import "./components/cards/Card.css";
+@import "./components/tags/Tag.css";
+
+:root {
+	--color-primary: #00274C;
+	--color-on-primary: white;
+	--color-on-background: black;
+	--border-radius: 10px;
+	--font-family: Roboto;
+	--animation-ease-in-time: .5s;
+}

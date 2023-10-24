@@ -1,0 +1,24 @@
+/* ---------- Tags ----------  */
+.moba11y-tag-list {
+	display: flex;
+	list-style: none;
+	padding: 0;
+	margin: 0;
+	margin-top: .5em;
+	text-overflow: ellipsis;
+	white-space: nowrap;
+}
+
+ul.moba11y-tag-list li {
+	margin: 0;
+	margin-left: .5em;
+	border-style: solid;
+	border-width: 1px;
+	border-color: var(--color-primary);
+	border-radius: var(--border-radius);
+}
+
+.moba11y-tag-list li span {
+	margin: 2px .5em;
+	display: inline-block;
+}
