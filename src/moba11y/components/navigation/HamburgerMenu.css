@@ -1,3 +1,12 @@
+:root {
+	--hamburger-color-primary: white;
+	--hamburger-color-on-primary: black;
+	--hamburger-color-accent: var(--hamburger-color-on-primary);
+	--hamburger-height: 50px;
+	--hamburger-border: 2px solid var(--hamburger-color-accent);
+	--font-family-hamburger: "Google Sans", Roboto, RobotoDraft, Helvetica, Arial, sans-serif;
+}
+
 body {
 	margin: 0;
 }
