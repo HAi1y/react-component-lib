@@ -50,6 +50,7 @@
     "@size-limit/preset-small-lib": "^9.0.0",
     "@types/react": "^18.2.24",
     "@types/react-dom": "^18.2.8",
+    "@types/react-helmet": "^6.1.8",
     "husky": "^8.0.3",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
@@ -57,5 +58,8 @@
     "tsdx": "^0.14.1",
     "tslib": "^2.6.2",
     "typescript": "^5.2.2"
+  },
+  "dependencies": {
+    "react-helmet": "^6.1.0"
   }
 }

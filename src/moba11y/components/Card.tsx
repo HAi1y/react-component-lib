@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { TagList, TagProps } from '../tags/Tag';
+import { TagList, TagProps } from './tags/Tag';
 
 export interface PostCardProps {
 	title: string;
