@@ -1,6 +1,6 @@
 import * as React from 'react';
 import { Navigation, NavigationSection } from './Navigation';
-import { ToggleButton } from '../ToggleButton';
+import { ToggleButton } from '../Button';
 
 export interface HamburgerIconProps {
 	onClick: (isExpanded: boolean) => any;
@@ -20,7 +20,7 @@ export function HamburgerIcon({ onClick }: HamburgerIconProps) {
 }
 
 export interface ThreeDotsIconProps {
-	onClick?: (isExpanded: boolean) => any;
+	onClick: (isExpanded: boolean) => any;
 }
 
 export function ThreeDotsIcon({ onClick }: ThreeDotsIconProps) {
@@ -49,7 +49,6 @@ export const HamburgerMenu = ({ navigation, title }: HamburgerMenuProps) => {
 				<div className={isExpanded ? "hamburger-title-container expanded" : "hamburger-title-container"}><h1>{title}</h1></div>
 				<Navigation isHidden={!isExpanded} navigation={navigation} />
 			</div>
-			<ThreeDotsIcon />
 		</div>
 	)
 }

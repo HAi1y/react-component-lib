@@ -27,12 +27,29 @@ h2 {
 	margin: .5em;
 }
 
-header {
+header,
+footer {
 	background-color: var(--color-primary);
+	min-height: var(--hamburger-height);
+}
+
+footer {
+	float: bottom;
 }
 
 body {
-	font-size: 1.2em;
+	font-size: 1.1em;
+	min-height: 100vh;
+}
+
+.viewport {
+	display: flex;
+	flex-direction: column;
+}
+
+main {
+	display: flex;
+	flex: 1;
 }
 
 /* ---------- Hamburger Menu ----------  */
@@ -290,20 +307,111 @@ button.three-dots-later {
 	margin: .5em;
 }
 
+/* ---------- Buttons ----------  */
+button.moba11y-button {
+	display: inline-block;
+	padding-left: 1.5rem;
+	padding-right: 1.5rem;
+	padding-top: 1rem;
+	padding-bottom: 1rem;
+	margin: .5rem;
+	background-color: var(--color-primary);
+	color: var(--color-on-primary);
+	border: 2px solid var(--color-on-primary);
+	transition: all var(--animation-ease-in-time) ease;
+	text-decoration: none;
+	border-radius: 8px;
+}
+
+button.moba11y-button:hover {
+	color: var(--color-primary);
+	background-color: var(--color-on-primary);
+	border-radius: 8px;
+	border: 2px solid var(--color-primary);
+}
+
+/* ---------- iOS Simulator ----------  */
+.moba11y-ios-simulator {
+	display: flex;
+}
+
+section {
+	height: 100%;
+}
+
+section.device {
+	margin: 0;
+	display: flex;
+	background-color: #484848;
+}
+
+section.device>div {
+	display: flex;
+	flex-direction: column;
+	border-radius: 20px;
+}
+
+div.screen {
+	min-height: 800px;
+}
+
+
+div.screen,
+div.simulator,
+div.inspector {
+	display: flex;
+	flex-direction: column;
+	width: 400px;
+	border-radius: 20px;
+	margin: .5em;
+	border: 8px solid black;
+	background-color: white;
+}
+
+div.simulator {
+	background-color: black;
+	color: white;
+}
+
+div.caption-panel {
+	margin: .2em;
+}
+
+div.simulator div.accessibility-element {
+	display: flex;
+	flex-direction: column;
+	flex-grow: 1;
+	background-color: white;
+	margin-right: .2em;
+	margin-bottom: .2em;
+}
+
+div.accessibility-element li {
+	display: flex;
+	margin: 1em;
+	align-items: center;
+}
+
+div.accessibility-element li span strong {
+	min-width: 5em;
+	display: inline-block;
+}
+
 /* ---------- Tags ----------  */
 .moba11y-tag-list {
 	display: flex;
+	flex-wrap: wrap;
 	list-style: none;
 	padding: 0;
-	margin: 0;
-	margin-top: .5em;
 	text-overflow: ellipsis;
 	white-space: nowrap;
 }
 
 ul.moba11y-tag-list li {
 	margin: 0;
-	margin-left: .5em;
+	margin-right: .5em;
+	margin-top: .25em;
+	margin-bottom: .25em;
 	border-style: solid;
 	border-width: 1px;
 	border-color: var(--color-primary);
@@ -313,4 +421,125 @@ ul.moba11y-tag-list li {
 .moba11y-tag-list li span {
 	margin: 2px .5em;
 	display: inline-block;
+}
+
+div.simulator div.voiceover-announcement {
+	display: flex;
+	flex-direction: row;
+	align-items: center;
+	margin-top: 1em;
+	border-radius: 10px;
+	border: 2px solid black;
+	padding: 1em;
+	background-color: white;
+	color: black;
+}
+
+div.simulator div.voiceover-controls {
+	margin: auto;
+	margin-top: 0;
+}
+
+div.voiceover-announcement div {
+	padding-right: 1em;
+}
+
+div.voiceover-announcement svg {
+	width: 35px;
+	height: 35px;
+}
+
+div.simulator div.controls {
+	display: grid;
+	justify-content: space-between;
+	grid-template-columns: 1fr 1fr 1fr;
+	margin: auto;
+	row-gap: 10px;
+	column-gap: 10px;
+}
+
+div.controls button.moba11y-button {
+	width: 74px;
+	height: 74px;
+	padding: 0;
+	padding-left: 0;
+	padding-right: 0;
+	padding-top: 0;
+	padding-bottom: 0;
+	margin: 0;
+}
+
+div.controls button.moba11y-button div {
+	position: relative;
+	top: -46px;
+	font-size: .8em;
+}
+
+div.simulator {
+	width: 400px;
+}
+
+div.simulator h2,
+div.inspector h2 {
+	font-size: 1.2em;
+	margin: .5em auto;
+}
+
+
+
+div.simulator div div h3 {
+	font-weight: 600;
+	margin: .2em auto;
+}
+
+div.simulator div.voiceover-controls {
+	display: flex;
+	flex-direction: row;
+}
+
+
+/* ---------- iOS Simulator ----------  */
+.ios.large-title {
+	font-size: 31px;
+}
+
+.ios.title-1 {
+	font-size: 25px;
+	margin: .2em auto;
+}
+
+.ios.title-2 {
+	font-size: 19px;
+}
+
+.ios.title-3 {
+	font-size: 17px;
+}
+
+.ios.headline {
+	font-size: 14px;
+}
+
+.ios.body {
+	font-size: 14px;
+}
+
+.ios.callout {
+	font-size: 13px;
+}
+
+.ios.subhead {
+	font-size: 12px;
+}
+
+.ios.footnote {
+	font-size: 12px;
+}
+
+.ios.caption-1 {
+	font-size: 11px;
+}
+
+.ios.caption-2 {
+	font-size: 11px;
 }
