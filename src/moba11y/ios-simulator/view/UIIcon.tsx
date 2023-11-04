@@ -3,16 +3,17 @@ import { UIAccessibilityElement } from '../UIAccessibilityElement';
 import { UIView } from './UIView';
 import { UIWindow } from '../UIWindow';
 import { UIAccessibilityCustomAction } from '../UIAccessibilityCustomAction';
+import { Classes } from './Classes';
 
 export interface UIIconProps {
 	label: string
-	classes: Array<string>
+	classes?: Classes
 	href?: string
 	a11yElement?: UIAccessibilityElement
 	onClick?: () => any
 }
 
-export function UIIcon({ label, classes, href, a11yElement, children }: React.PropsWithChildren<UIIconProps>) {
+export function UIIcon({ label, classes = new Classes, href, a11yElement, children }: React.PropsWithChildren<UIIconProps>) {
 
 	if (!a11yElement) {
 		a11yElement = UIWindow.newElement()

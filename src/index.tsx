@@ -27,3 +27,9 @@ export { UIGridLayout }
 
 import { UIPager } from "./moba11y/ios-simulator/view/UIPager";
 export { UIPager }
+
+import { UIWindow } from "./moba11y/ios-simulator/UIWindow";
+export { UIWindow }
+
+import { Classes } from "./moba11y/ios-simulator/view/Classes";
+export { Classes }

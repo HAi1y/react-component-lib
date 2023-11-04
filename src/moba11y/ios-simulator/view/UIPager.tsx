@@ -1,21 +1,23 @@
 import * as React from 'react';
-import { UIView } from './UIView';
+import { UIVIew } from './UIView';
 import { UIWindow } from '../UIWindow';
 import { UIAccessibilityElement } from '../UIAccessibilityElement';
 import { UIAccessibilityTrait } from '../UIAccessibilityTrait';
+import { Classes } from './Classes';
 
 export interface UIPagerProps {
 	initial: number
 	max: number
+	createView: (index: number) => React.ReactElement
 	a11yElement?: UIAccessibilityElement
-	classes?: Array<string>
+	classes?: Classes
 }
 
-export function UIPager({ classes = [], initial, a11yElement, max }: React.PropsWithChildren<UIPagerProps>) {
+export function UIPager({ initial, max, createView, a11yElement, classes = new Classes }: React.PropsWithChildren<UIPagerProps>) {
 
 	var [current, setIndex] = React.useState(initial);
 
-	classes.push("pager")
+	classes.addClass("pager")
 
 	if (!a11yElement) {
 		a11yElement = UIWindow.newElement()
@@ -61,14 +63,16 @@ export function UIPager({ classes = [], initial, a11yElement, max }: React.Props
 	var result: Array<React.ReactElement> = []
 
 	for (var i = 0; i < max; i++) {
-		result.push(<span className={current - 1 === i ? "active" : ""} />)
+		result.push(<span key={i} className={current - 1 === i ? "active" : ""} />)
 	}
 
-	return (
-		<UIView classes={classes} a11yElement={a11yElement}>
-			<div >
+	return (<>
+		{createView(current)}
+		<UIVIew classes={classes} a11yElement={a11yElement}>
+			<div>
 				{result}
 			</div>
-		</UIView>
+		</UIVIew>
+	</>
 	)
 }

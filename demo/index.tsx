@@ -1,13 +1,14 @@
 import * as React from 'react';
 import { createRoot } from 'react-dom/client'
 import { BrowserRouter, Routes, Route } from "react-router-dom";
-import { HamburgerMenu, NavigationSection, TagList, PostCard, PostList, HamburgerApp, CTAButton, UITextView, UIGridLayout, UIIcon, UIPager } from "../dist"
+import { HamburgerMenu, NavigationSection, TagList, PostCard, PostList, HamburgerApp, CTAButton, UITextView, UIGridLayout, UIIcon, UIPager, UIWindow } from "../dist"
 import "../src/moba11y/styles.css"
 import { IOSSimulator, UITitle } from '../dist';
+import { Classes } from '../dist';
 
 function UIIconTutorial({ text, href }) {
 
-	return (<UIIcon label={text} classes={["launcher-icon"]} href={href}>
+	return (<UIIcon label={text} classes={new Classes(["launcher-icon"])} href={href}>
 		<svg fill="#000000" height="64px" width="64px" version="1.1" id="Layer_1" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512">
 			<g>
 				<g>
@@ -75,13 +76,22 @@ const navigation: Array<NavigationSection> = [{
 }];
 
 const App = () => {
+
+	const createPage = (index: number) => {
+		if (index === 1) return (<UIIconTutorial text="Pager" href="/simulator/pager" />)
+		else if (index === 2) return (<UIIconTutorial text="Multiple Lines" href="/simulator/pager" />)
+		else if (index === 3) return (<UIIconTutorial text="Help" href="/simulator/pager" />)
+	}
+
 	return (
 		<HamburgerApp title={"iOS Accessibility Simulator"} navigation={navigation} icon="https://moba11y.ghost.io/content/images/2023/10/Screen-Shot-2023-05-09-at-3.33.40-PM-2.png" location={""}>
 
 			<BrowserRouter>
 				<Routes>
 					<Route path="/" element={Example()} />
-					<Route path="/simulator/pager" element={<IOSSimulator ><UIPager initial={2} max={3} /></IOSSimulator>} />
+					<Route path="/simulator/pager" element={<IOSSimulator >
+						<UIPager initial={2} max={3} createView={createPage} />
+					</IOSSimulator>} />
 					<Route path="/components/tags" element={<TagList tags={[{ "title": "iOS" }, { title: "iOS Accessibility Guide" }]} />} />
 					<Route path="/components/buttons" element={<ButtonList />} />
 					<Route path="/post-list" element={ExmaplePostList()} />

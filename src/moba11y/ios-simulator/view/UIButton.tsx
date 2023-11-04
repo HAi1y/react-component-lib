@@ -4,16 +4,17 @@ import { FontStyle } from './UITextView';
 import { UIView } from './UIView';
 import { UIAccessibilityTrait } from '../UIAccessibilityTrait';
 import { UIWindow } from '../UIWindow';
+import { Classes } from './Classes';
 
 export interface UIButtonProps {
 	text: string
 	fontStyle?: FontStyle
-	className?: string
+	classes: Classes
 	a11yElement?: UIAccessibilityElement
 	onClick?: () => any
 }
 
-export function UIButton({ text, fontStyle = FontStyle.body, className, a11yElement, onClick }: UIButtonProps) {
+export function UIButton({ text, fontStyle = FontStyle.body, classes = new Classes, a11yElement, onClick }: UIButtonProps) {
 
 	if (!a11yElement) {
 		a11yElement = UIWindow.newElement()
@@ -24,8 +25,9 @@ export function UIButton({ text, fontStyle = FontStyle.body, className, a11yElem
 		}
 	}
 
+	classes.push(fontStyle)
 	return (
-		<UIView className={[className, fontStyle].join(' ')} a11yElement={a11yElement}>
+		<UIView classes={classes} a11yElement={a11yElement}>
 			<button onClick={onClick}>{text}</button>
 		</UIView>
 	)

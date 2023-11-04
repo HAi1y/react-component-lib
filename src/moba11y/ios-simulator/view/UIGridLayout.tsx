@@ -1,13 +1,14 @@
 import * as React from 'react';
+import { Classes } from './Classes';
 
 export interface UIGridLayoutProps {
-	className?: string
+	classes?: Classes
 }
 
-export function UIGridLayout({ className, children }: React.PropsWithChildren<UIGridLayoutProps>) {
+export function UIGridLayout({ classes = new Classes, children }: React.PropsWithChildren<UIGridLayoutProps>) {
 
 	return (
-		<div className={[className].concat("ios grid-layout").join(' ')}>
+		<div className={classes.toClassName()}>
 			{children}
 		</div>
 	)

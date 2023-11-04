@@ -59,8 +59,6 @@ export class UIAccessibilityElement {
 
 	removeAccessibilityFocus() {
 
-		console.log("Removing focus from: " + this.label)
-
 		if (this.setIsAccessibilityFocused) {
 			this.setIsAccessibilityFocused(false)
 		} else {

@@ -3,6 +3,7 @@ import { UIAccessibilityElement } from '../UIAccessibilityElement';
 import { UIView } from './UIView';
 import { UIWindow } from '../UIWindow';
 import { UIAccessibilityTrait } from '../UIAccessibilityTrait';
+import { Classes } from './Classes';
 
 
 export enum FontStyle {
@@ -13,11 +14,11 @@ export enum FontStyle {
 export interface UITextViewProps {
 	text: string
 	fontStyle?: FontStyle
-	classes?: Array<string>
+	classes?: Classes
 	a11yElement?: UIAccessibilityElement
 }
 
-export function UITextView({ text, fontStyle = FontStyle.body, classes = [], a11yElement }: UITextViewProps) {
+export function UITextView({ text, fontStyle = FontStyle.body, classes = new Classes, a11yElement }: UITextViewProps) {
 
 	if (!a11yElement) {
 		a11yElement = UIWindow.newElement()
@@ -34,7 +35,7 @@ export function UITextView({ text, fontStyle = FontStyle.body, classes = [], a11
 	)
 }
 
-export function UITitle({ text, fontStyle = FontStyle.title, classes = [], a11yElement }: UITextViewProps) {
+export function UITitle({ text, fontStyle = FontStyle.title, classes = new Classes, a11yElement }: UITextViewProps) {
 
 	if (!a11yElement) {
 		a11yElement = UIWindow.newElement()

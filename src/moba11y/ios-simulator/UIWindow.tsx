@@ -55,8 +55,6 @@ export class UIWindow extends UIAccessibilityElements {
 			this.accessibilityFocusIndex++
 		}
 
-		console.log(UIWindow.elements)
-
 		var element: UIAccessibilityElement = UIWindow.elements[this.accessibilityFocusIndex]
 		UIWindow.elements.forEach(element => element.removeAccessibilityFocus())
 		element.requestAccessibilityFocus()
@@ -64,7 +62,12 @@ export class UIWindow extends UIAccessibilityElements {
 	}
 
 	static newElement() {
-		this.elements.push(new UIAccessibilityElement)
-		return this.elements[this.elements.length - 1]
+		const result = new UIAccessibilityElement
+		this.addElement(result)
+		return result
+	}
+
+	static addElement(a11yElement: UIAccessibilityElement) {
+		this.elements.push(a11yElement)
 	}
 }
