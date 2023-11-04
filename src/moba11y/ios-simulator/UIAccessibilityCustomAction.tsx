@@ -1,4 +1,4 @@
-import { TagProps } from "../../components/Tag"
+import { TagProps } from "../components/Tag"
 
 export class UIAccessibilityCustomAction {
 	label: string
@@ -14,12 +14,12 @@ export class UIAccessibilityCustomActions extends Array<UIAccessibilityCustomAct
 
 	constructor(actions?: Array<UIAccessibilityCustomAction>) {
 		super()
-		this.concat(actions ? actions : [])
+		actions?.forEach((action) => this.push(action))
 	}
 
 	tags() {
 		const result: Array<TagProps> = []
-		this.map(({ label }) => result.push({ title: label }))
+		this.forEach(({ label }) => result.push({ title: label }))
 		return result
 	}
 }

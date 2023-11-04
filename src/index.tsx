@@ -16,5 +16,14 @@ export { CTAButton, ToggleButton }
 import { IOSSimulator } from "./moba11y/ios-simulator";
 export { IOSSimulator }
 
-import { UITextView, UITitle } from "./moba11y/ios-simulator/components/UITextView";
+import { UITextView, UITitle } from "./moba11y/ios-simulator/view/UITextView";
 export { UITextView, UITitle }
+
+import { UIIcon } from "./moba11y/ios-simulator/view/UIIcon";
+export { UIIcon }
+
+import { UIGridLayout } from "./moba11y/ios-simulator/view/UIGridLayout";
+export { UIGridLayout }
+
+import { UIPager } from "./moba11y/ios-simulator/view/UIPager";
+export { UIPager }

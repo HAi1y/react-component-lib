@@ -543,3 +543,61 @@ div.simulator div.voiceover-controls {
 .ios.caption-2 {
 	font-size: 11px;
 }
+
+.screen div {
+	display: flex;
+}
+
+.screen .accessibility-focus {
+	box-shadow: 0 0 0 4px black;
+	outline: none;
+	border-radius: 4px;
+	transition: box-shadow 0.2s ease;
+}
+
+.accessibility-element {
+	padding: 4px;
+	margin: 4px;
+}
+
+.ios.grid-layout {
+	display: grid;
+	grid-template-columns: 1fr 1fr 1fr 1fr;
+	margin: .1em auto;
+}
+
+.ios.launcher-icon {
+	display: flex;
+	flex-direction: column;
+}
+
+.ios.launcher-icon div {
+	width: 4em;
+	overflow-wrap: break-word;
+	display: inline-block;
+	text-align: center;
+}
+
+.ios.launcher-icon svg {
+	margin: 0 auto;
+}
+
+.ios.text-view,
+.ios.pager {
+	margin: 8px auto;
+}
+
+.ios.pager div span {
+	width: 1em;
+	height: 1em;
+	border-radius: 50%;
+	border-style: solid;
+	border-width: 2px;
+	border-color: black;
+	background-color: white;
+	margin: 4px;
+}
+
+.ios.pager div span.active {
+	background-color: black;
+}

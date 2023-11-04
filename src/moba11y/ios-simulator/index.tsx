@@ -1,10 +1,18 @@
 import * as React from 'react';
 import { CTAButton } from '../components/Button';
-import { TagList } from '../components/Tag';
 import { Speaker, RotatingArrows, UpArrow, LeftArrow, RightArrow, DownArrow } from '../components/Icons';
-import { UIAccessibilityElement } from './components/UIAccessibilityElement';
-import { UIAccessibilityTrait, UIAccessibilityTraits } from './components/UIAccessibilityTrait';
-import { UIAccessibilityCustomAction, UIAccessibilityCustomActions } from './components/UIAccessibilityCustomAction';
+import { UIWindow } from './UIWindow';
+import { UIAccessibilityTrait } from './UIAccessibilityTrait';
+
+enum RotorSettings {
+	Headings = "Headings",
+	Adjustable = "Adjustable",
+	Words = "Words",
+	Characters = "Characters"
+}
+export class Rotor {
+	defaultRotor = [RotorSettings.Headings, RotorSettings.Words, RotorSettings.Characters]
+}
 
 export interface IOSSimulatorProps {
 	instructions?: React.ReactElement | undefined
@@ -12,44 +20,63 @@ export interface IOSSimulatorProps {
 
 export function IOSSimulator({ children, instructions }: React.PropsWithChildren<IOSSimulatorProps>) {
 
-	const [accessibilityFocus, setAccessibilityFocus] = React.useState(new UIAccessibilityElement(
-		"{AccessibilityLabel}",
-		"{AccessibilityValue}",
-		"{AccessibilityHint}",
-		new UIAccessibilityTraits([UIAccessibilityTrait.staticText]),
-		new UIAccessibilityCustomActions(
-			[
-				new UIAccessibilityCustomAction("A Custom Action", () => { alert("You called a custom action.") })
-			]
-		)
-	))
+	var [accessibilityFocus, setAccessibilityFocus] = React.useState(UIWindow.accessibilityFocus())
+	var [accessibilityAnnouncement, setAccessibilityAnnouncement] = React.useState("")
+	var [rotorSettings] = React.useState(["Headings", "Words", "Characters"])
+
+	if (UIWindow.accessibilityFocusIndex < 0) setTimeout(() => swipeRight(), 2000)
+
+	var timeout: NodeJS.Timeout
+
+	var speech = window ? window.speechSynthesis : undefined
 
 	function activate() {
-		alert("Activate")
+		UIWindow.accessibilityFocus().actions[0].action()
 	}
 
 	function swipeRight() {
-		document.getElementById("i")?.getAttribute("")
+		setAccessibilityFocus(UIWindow.focusNext())
+		setAccessibilityAnnouncement(UIWindow.accessibilityFocus().toAnnouncement())
 	}
 
 	function swipeLeft() {
-		alert("Swipe Left")
+		setAccessibilityFocus(UIWindow.focusPrevious())
+		setAccessibilityAnnouncement(UIWindow.accessibilityFocus().toAnnouncement())
 	}
 
 	function rotor() {
-		alert("Rotor")
+		rotorSettings.push(rotorSettings.splice(0, 1)[0])
+		setAccessibilityAnnouncement("Rotor: " + rotorSettings[0])
 	}
 
 	function swipeDown() {
-		alert("Swipe Down")
+		const element = UIWindow.accessibilityFocus()
+
+		if (element.traits.includes(UIAccessibilityTrait.adjustable)) {
+			if (element.decrement) {
+				element.decrement()
+				setAccessibilityAnnouncement("" + element.value)
+			} else {
+				setAccessibilityAnnouncement("Doesn't support the increment action.")
+			}
+		}
 	}
 
 	function swipeUp() {
-		alert("Swipe Up")
+		const element = UIWindow.accessibilityFocus()
+
+		if (element.traits.includes(UIAccessibilityTrait.adjustable)) {
+			if (element.increment) {
+				element.increment()
+				setAccessibilityAnnouncement("" + element.value)
+			} else {
+				setAccessibilityAnnouncement("Doesn't support the increment action.")
+			}
+		}
 	}
 
 	function home() {
-		alert("Home")
+		console.log("Home")
 	}
 
 	interface VoiceOverAnnouncementPropts {
@@ -57,23 +84,29 @@ export function IOSSimulator({ children, instructions }: React.PropsWithChildren
 	}
 
 	function VoiceOverAnnouncement({ announcement }: VoiceOverAnnouncementPropts) {
+
+		if (window && speech) {
+			var msg = new SpeechSynthesisUtterance();
+			msg.text = announcement
+
+			if (speech.pending) {
+				speech.cancel()
+
+				if (timeout) {
+					clearTimeout(timeout)
+				}
+
+				timeout = setTimeout(() => speech && speech.speak(msg), 250);
+			} else {
+				speech.speak(msg)
+			}
+		}
+
 		return (<div className="voiceover-announcement">
 			<div aria-label="VoiceOver Announcement">
 				<Speaker />
 			</div>
 			<div><span>{announcement}</span></div>
-		</div>)
-	}
-
-	function AccessibilityElement({ label, traits, value, hint, actions }: UIAccessibilityElement) {
-		return (<div className="accessibility-element">
-			<ul>
-				<li><span><strong>Label:</strong></span><span>{label}</span></li>
-				<li><span><strong>Traits:</strong></span><TagList tags={traits.tags()} /></li>
-				<li><span><strong>Value:</strong></span>{value}</li>
-				<li><span><strong>Hint:</strong></span>{hint}</li>
-				<li><span><strong>Actions:</strong></span><TagList tags={actions.tags()}></TagList></li>
-			</ul>
 		</div>)
 	}
 
@@ -96,8 +129,6 @@ export function IOSSimulator({ children, instructions }: React.PropsWithChildren
 								<CTAButton onClick={swipeLeft}><LeftArrow /></CTAButton>
 								<CTAButton onClick={rotor}>
 									<RotatingArrows />
-									<div>Hello</div>
-
 								</CTAButton>
 								<CTAButton onClick={swipeRight}><RightArrow /></CTAButton>
 								<div></div>
@@ -105,12 +136,12 @@ export function IOSSimulator({ children, instructions }: React.PropsWithChildren
 								<CTAButton onClick={activate}>Activate</CTAButton>
 							</div>
 						</div>
-						<VoiceOverAnnouncement announcement="Click the right arrow below to begin." />
+						<VoiceOverAnnouncement announcement={accessibilityAnnouncement} />
 					</div>
 				</div>
 				<div className="inspector">
 					<h2>Accessibility Inspector</h2>
-					<AccessibilityElement {...accessibilityFocus} />
+					{accessibilityFocus.toJsx()}
 				</div>
 			</div>
 		</section>
