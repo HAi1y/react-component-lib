@@ -3,6 +3,9 @@ import { UIAccessibilityElements, UIAccessibilityElement } from "./UIAccessibili
 import { UIAccessibilityTrait, UIAccessibilityTraits } from "./UIAccessibilityTrait";
 
 export class UIWindow extends UIAccessibilityElements {
+	static clear() {
+		while (UIWindow.elements.length > 0) UIWindow.elements.pop()
+	}
 
 	private static elements = new UIWindow
 
@@ -31,10 +34,12 @@ export class UIWindow extends UIAccessibilityElements {
 		)
 	}
 
+	static log(): any {
+		console.log(UIWindow.elements)
+	}
 
-	private constructor(elements?: [UIAccessibilityElement]) {
+	private constructor() {
 		super()
-		elements?.forEach(element => this.push(element))
 	}
 
 	static focusPrevious(): UIAccessibilityElement {
@@ -62,12 +67,15 @@ export class UIWindow extends UIAccessibilityElements {
 	}
 
 	static newElement() {
-		const result = new UIAccessibilityElement
-		this.addElement(result)
-		return result
+		return this.addElement(new UIAccessibilityElement)
 	}
 
-	static addElement(a11yElement: UIAccessibilityElement) {
+	static removeElement(a11yElement: UIAccessibilityElement) {
+		this.elements.splice(this.elements.indexOf(a11yElement), 1)
+	}
+
+	static addElement(a11yElement: UIAccessibilityElement): UIAccessibilityElement {
 		this.elements.push(a11yElement)
+		return (a11yElement)
 	}
 }

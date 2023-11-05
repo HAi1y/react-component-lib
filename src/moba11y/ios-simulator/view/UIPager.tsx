@@ -1,19 +1,20 @@
 import * as React from 'react';
-import { UIVIew } from './UIView';
-import { UIWindow } from '../UIWindow';
+import { UIView } from './UIView';
 import { UIAccessibilityElement } from '../UIAccessibilityElement';
 import { UIAccessibilityTrait } from '../UIAccessibilityTrait';
 import { Classes } from './Classes';
+import { UIWindow } from '../UIWindow';
 
 export interface UIPagerProps {
 	initial: number
 	max: number
-	createView: (index: number) => React.ReactElement
+	onIncrement?: () => any
+	onDecrement?: () => any
 	a11yElement?: UIAccessibilityElement
 	classes?: Classes
 }
 
-export function UIPager({ initial, max, createView, a11yElement, classes = new Classes }: React.PropsWithChildren<UIPagerProps>) {
+export function UIPager({ initial, max, onIncrement, onDecrement, a11yElement, classes = new Classes }: React.PropsWithChildren<UIPagerProps>) {
 
 	var [current, setIndex] = React.useState(initial);
 
@@ -45,6 +46,8 @@ export function UIPager({ initial, max, createView, a11yElement, classes = new C
 			setIndex(++current)
 		}
 
+		if (onIncrement) onIncrement()
+
 		updateValue(current + " of " + max)
 	}
 
@@ -57,6 +60,8 @@ export function UIPager({ initial, max, createView, a11yElement, classes = new C
 			setIndex(--current)
 		}
 
+		if (onDecrement) onDecrement()
+
 		updateValue(current + " of " + max)
 	}
 
@@ -67,12 +72,11 @@ export function UIPager({ initial, max, createView, a11yElement, classes = new C
 	}
 
 	return (<>
-		{createView(current)}
-		<UIVIew classes={classes} a11yElement={a11yElement}>
+		<UIView classes={classes} a11yElement={a11yElement}>
 			<div>
 				{result}
 			</div>
-		</UIVIew>
+		</UIView>
 	</>
 	)
 }

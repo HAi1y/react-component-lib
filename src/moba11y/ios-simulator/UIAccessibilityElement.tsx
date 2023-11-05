@@ -13,6 +13,7 @@ export class UIAccessibilityElement {
 	decrement?: () => any
 	traits: UIAccessibilityTraits = new UIAccessibilityTraits
 	actions: UIAccessibilityCustomActions = new UIAccessibilityCustomActions
+	hidden = false
 
 	constructor(
 		label?: string,

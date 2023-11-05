@@ -76,7 +76,11 @@ export function IOSSimulator({ children, instructions }: React.PropsWithChildren
 	}
 
 	function home() {
-		console.log("Home")
+		if (window) window.location.href = "/"
+	}
+
+	function debug() {
+		UIWindow.log()
 	}
 
 	interface VoiceOverAnnouncementPropts {
@@ -110,6 +114,8 @@ export function IOSSimulator({ children, instructions }: React.PropsWithChildren
 		</div>)
 	}
 
+	console.log("Called")
+
 	return (<div className="moba11y-ios-simulator">
 		<section className="device">
 			<div>
@@ -131,7 +137,7 @@ export function IOSSimulator({ children, instructions }: React.PropsWithChildren
 									<RotatingArrows />
 								</CTAButton>
 								<CTAButton onClick={swipeRight}><RightArrow /></CTAButton>
-								<div></div>
+								<CTAButton onClick={debug}>Debug</CTAButton>
 								<CTAButton onClick={swipeDown}><DownArrow /></CTAButton>
 								<CTAButton onClick={activate}>Activate</CTAButton>
 							</div>

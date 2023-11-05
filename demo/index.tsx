@@ -1,7 +1,7 @@
 import * as React from 'react';
 import { createRoot } from 'react-dom/client'
 import { BrowserRouter, Routes, Route } from "react-router-dom";
-import { HamburgerMenu, NavigationSection, TagList, PostCard, PostList, HamburgerApp, CTAButton, UITextView, UIGridLayout, UIIcon, UIPager, UIWindow } from "../dist"
+import { HamburgerMenu, NavigationSection, TagList, PostCard, PostList, HamburgerApp, CTAButton, UITextView, UIGridLayout, UIIcon, UIPager, UIWindow, UICarousel } from "../dist"
 import "../src/moba11y/styles.css"
 import { IOSSimulator, UITitle } from '../dist';
 import { Classes } from '../dist';
@@ -55,7 +55,7 @@ function Example() {
 			<UITitle text="Home" />
 			<UIGridLayout >
 				<UIIconTutorial text="Pager" href="/simulator/pager" />
-				<UIIconTutorial text="Multiple Lines" href="/simulator/pager" />
+				<UIIconTutorial text="Carousel" href="/simulator/carousel" />
 				<UIIconTutorial text="Help" href="/simulator/pager" />
 				<UIIconTutorial text="Annotations" href="/simulator/pager" />
 			</UIGridLayout>
@@ -90,7 +90,11 @@ const App = () => {
 				<Routes>
 					<Route path="/" element={Example()} />
 					<Route path="/simulator/pager" element={<IOSSimulator >
-						<UIPager initial={2} max={3} createView={createPage} />
+						<UIPager initial={2} max={3} />
+					</IOSSimulator>} />
+					<Route path="/simulator/carousel" element={<IOSSimulator >
+						<UICarousel views={[createPage(1), createPage(2), createPage(3)]} />
+						<UICarousel views={[createPage(1), createPage(2), createPage(3)]} />
 					</IOSSimulator>} />
 					<Route path="/components/tags" element={<TagList tags={[{ "title": "iOS" }, { title: "iOS Accessibility Guide" }]} />} />
 					<Route path="/components/buttons" element={<ButtonList />} />

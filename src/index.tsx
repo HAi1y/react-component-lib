@@ -33,3 +33,6 @@ export { UIWindow }
 
 import { Classes } from "./moba11y/ios-simulator/view/Classes";
 export { Classes }
+
+import { UICarousel } from "./moba11y/ios-simulator/view/UICarousel";
+export { UICarousel }
