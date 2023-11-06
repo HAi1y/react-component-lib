@@ -26,7 +26,7 @@ export function UIIcon({ label, classes = new Classes, href, a11yElement, childr
 
 	a11yElement.actions.push(new UIAccessibilityCustomAction(
 		"Default",
-		() => { if (window && href) window.location.href = href }
+		() => { if (window !== undefined && href) window.location.href = href }
 	))
 
 	return (

@@ -96,7 +96,7 @@ export function IOSSimulator({ children, instructions }: React.PropsWithChildren
 
 	function VoiceOverAnnouncement({ announcement }: VoiceOverAnnouncementPropts) {
 
-		if (window && speech) {
+		if (speech) {
 			var msg = new SpeechSynthesisUtterance();
 			msg.text = announcement
 
