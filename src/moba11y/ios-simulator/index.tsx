@@ -28,7 +28,11 @@ export function IOSSimulator({ children, instructions }: React.PropsWithChildren
 
 	var timeout: NodeJS.Timeout
 
-	var speech = window ? window.speechSynthesis : undefined
+	var speech: SpeechSynthesis
+
+	React.useEffect(() => {
+		speech = window.speechSynthesis
+	})
 
 	function activate() {
 		UIWindow.accessibilityFocus().actions[0].action()
@@ -76,7 +80,7 @@ export function IOSSimulator({ children, instructions }: React.PropsWithChildren
 	}
 
 	function home() {
-		if (window) window.location.href = "/"
+		if (window !== undefined) window.location.href = "/"
 	}
 
 	function debug() {
