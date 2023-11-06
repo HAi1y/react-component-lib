@@ -51,7 +51,7 @@ export class UIAccessibilityElement {
 		}
 	}
 
-	toJsx() {
+	toJsx(): React.ReactNode {
 		return (<div className="accessibility-element">
 			<ul>
 				<li><span><strong>Label:</strong></span><span>{this.label}</span></li>
