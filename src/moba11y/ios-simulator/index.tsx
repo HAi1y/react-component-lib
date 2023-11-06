@@ -30,30 +30,35 @@ export function IOSSimulator({ children, instructions }: React.PropsWithChildren
 
 	var speech: SpeechSynthesis
 
-	React.useEffect(() => {
+	if (window !== undefined) {
 		speech = window.speechSynthesis
-	})
+	}
 
 	function activate() {
+		console.log("Activate")
 		UIWindow.accessibilityFocus().actions[0].action()
 	}
 
 	function swipeRight() {
+		console.log("Swipe Right")
 		setAccessibilityFocus(UIWindow.focusNext())
 		setAccessibilityAnnouncement(UIWindow.accessibilityFocus().toAnnouncement())
 	}
 
 	function swipeLeft() {
+		console.log("Swipe Left")
 		setAccessibilityFocus(UIWindow.focusPrevious())
 		setAccessibilityAnnouncement(UIWindow.accessibilityFocus().toAnnouncement())
 	}
 
 	function rotor() {
+		console.log("Rotor")
 		rotorSettings.push(rotorSettings.splice(0, 1)[0])
 		setAccessibilityAnnouncement("Rotor: " + rotorSettings[0])
 	}
 
 	function swipeDown() {
+		console.log("Swipe Down")
 		const element = UIWindow.accessibilityFocus()
 
 		if (element.traits.includes(UIAccessibilityTrait.adjustable)) {
@@ -67,6 +72,7 @@ export function IOSSimulator({ children, instructions }: React.PropsWithChildren
 	}
 
 	function swipeUp() {
+		console.log("Swipe Up")
 		const element = UIWindow.accessibilityFocus()
 
 		if (element.traits.includes(UIAccessibilityTrait.adjustable)) {
@@ -80,14 +86,17 @@ export function IOSSimulator({ children, instructions }: React.PropsWithChildren
 	}
 
 	function home() {
+		console.log("Home")
 		if (window !== undefined) window.location.href = "/"
 	}
 
 	function debug() {
+		console.log("Debug")
 		UIWindow.log()
 	}
 
 	function reset() {
+		console.log("Reset")
 	}
 
 	interface VoiceOverAnnouncementPropts {
@@ -120,8 +129,6 @@ export function IOSSimulator({ children, instructions }: React.PropsWithChildren
 			<div><span>{announcement}</span></div>
 		</div>)
 	}
-
-	console.log("Rerender")
 
 	return (<div className="moba11y-ios-simulator">
 		<section className="device">
