@@ -2,15 +2,15 @@ import * as React from 'react';
 import { UIAccessibilityElement } from '../UIAccessibilityElement';
 import { Classes } from './Classes';
 import { UIPager } from './UIPager';
-import { UIWindow } from '../UIWindow';
 
 export interface UICarouselProps {
 	views: Array<React.ReactNode>
 	a11yElement?: UIAccessibilityElement
 	classes?: Classes
+	label?: string
 }
 
-export function UICarousel({ views, a11yElement, classes = new Classes }: React.PropsWithChildren<UICarouselProps>) {
+export function UICarousel({ label, views, a11yElement, classes = new Classes }: React.PropsWithChildren<UICarouselProps>) {
 
 	const initial = 0
 	const max = views.length - 1
@@ -33,7 +33,6 @@ export function UICarousel({ views, a11yElement, classes = new Classes }: React.
 			setIndex(++current)
 		}
 
-		UIWindow.clear()
 		updateValue(current + " of " + max)
 	}
 
@@ -46,20 +45,12 @@ export function UICarousel({ views, a11yElement, classes = new Classes }: React.
 			setIndex(--current)
 		}
 
-		UIWindow.clear()
-
 		updateValue(current + " of " + max)
-	}
-
-	var result: Array<React.ReactElement> = []
-
-	for (var i = 0; i < max; i++) {
-		result.push(<span key={i} className={current - 1 === i ? "active" : ""} />)
 	}
 
 	return (<>
 		{views[current]}
-		<UIPager initial={initial} max={max} onIncrement={increment} onDecrement={decrement} />
+		<UIPager label={label} initial={initial} max={max} onIncrement={increment} onDecrement={decrement} />
 	</>
 	)
 }

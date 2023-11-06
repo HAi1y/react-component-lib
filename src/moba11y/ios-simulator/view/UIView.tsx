@@ -1,6 +1,7 @@
 import * as React from 'react';
 import { UIAccessibilityElement } from '../UIAccessibilityElement';
 import { Classes } from './Classes';
+import { UIWindow } from '../UIWindow';
 
 export interface UIViewProps {
 	classes?: Classes
@@ -21,6 +22,15 @@ export function UIView({ classes = new Classes, a11yElement, children }: React.P
 	} else {
 		classes.removeClass("accessibility-focus")
 	}
+
+
+	React.useEffect(() => {
+		UIWindow.add(a11yElement)
+
+		return (() => {
+			UIWindow.remove(a11yElement)
+		})
+	})
 
 	return (
 		<div className={classes.toClassName()}>

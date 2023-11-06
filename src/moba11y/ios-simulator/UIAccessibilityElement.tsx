@@ -14,6 +14,18 @@ export class UIAccessibilityElement {
 	traits: UIAccessibilityTraits = new UIAccessibilityTraits
 	actions: UIAccessibilityCustomActions = new UIAccessibilityCustomActions
 	hidden = false
+	nextElement?: UIAccessibilityElement
+	previousElement?: UIAccessibilityElement
+
+	next(element?: UIAccessibilityElement) {
+		this.nextElement = element
+		if (element) element.previousElement = this
+	}
+
+	previous(element?: UIAccessibilityElement) {
+		this.previousElement = element
+		if (element) element.nextElement = this
+	}
 
 	constructor(
 		label?: string,
@@ -73,6 +85,10 @@ export class UIAccessibilityElement {
 		} else {
 			console.log("Set Is Accessibilty Focused Undefined")
 		}
+	}
+
+	log() {
+		console.log(this.previousElement?.label + " - " + this.label + " - " + this.nextElement?.label)
 	}
 }
 

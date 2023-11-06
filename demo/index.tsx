@@ -78,7 +78,7 @@ const navigation: Array<NavigationSection> = [{
 const App = () => {
 
 	const createPage = (index: number) => {
-		if (index === 1) return (<UIIconTutorial text="Pager" href="/simulator/pager" />)
+		if (index === 1) return (<UIIconTutorial text="Demo 1" href="/simulator/pager" />)
 		else if (index === 2) return (<UIIconTutorial text="Multiple Lines" href="/simulator/pager" />)
 		else if (index === 3) return (<UIIconTutorial text="Help" href="/simulator/pager" />)
 	}
@@ -93,8 +93,8 @@ const App = () => {
 						<UIPager initial={2} max={3} />
 					</IOSSimulator>} />
 					<Route path="/simulator/carousel" element={<IOSSimulator >
-						<UICarousel views={[createPage(1), createPage(2), createPage(3)]} />
-						<UICarousel views={[createPage(1), createPage(2), createPage(3)]} />
+						<UICarousel label="Pager 1" views={[createPage(3), createPage(2), createPage(3)]} />
+						<UICarousel label="Pager 2" views={[createPage(2), createPage(2), createPage(3)]} />
 					</IOSSimulator>} />
 					<Route path="/components/tags" element={<TagList tags={[{ "title": "iOS" }, { title: "iOS Accessibility Guide" }]} />} />
 					<Route path="/components/buttons" element={<ButtonList />} />

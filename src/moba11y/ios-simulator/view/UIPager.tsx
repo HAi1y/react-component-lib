@@ -12,9 +12,10 @@ export interface UIPagerProps {
 	onDecrement?: () => any
 	a11yElement?: UIAccessibilityElement
 	classes?: Classes
+	label?: string
 }
 
-export function UIPager({ initial, max, onIncrement, onDecrement, a11yElement, classes = new Classes }: React.PropsWithChildren<UIPagerProps>) {
+export function UIPager({ label, initial, max, onIncrement, onDecrement, a11yElement, classes = new Classes }: React.PropsWithChildren<UIPagerProps>) {
 
 	var [current, setIndex] = React.useState(initial);
 
@@ -22,7 +23,7 @@ export function UIPager({ initial, max, onIncrement, onDecrement, a11yElement, c
 
 	if (!a11yElement) {
 		a11yElement = UIWindow.newElement()
-		a11yElement.label = "Page"
+		a11yElement.label = label ? label : "Page"
 		a11yElement.value = current + " of " + max
 		a11yElement.traits.push(UIAccessibilityTrait.adjustable)
 

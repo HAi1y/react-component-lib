@@ -24,7 +24,7 @@ export function IOSSimulator({ children, instructions }: React.PropsWithChildren
 	var [accessibilityAnnouncement, setAccessibilityAnnouncement] = React.useState("")
 	var [rotorSettings] = React.useState(["Headings", "Words", "Characters"])
 
-	if (UIWindow.accessibilityFocusIndex < 0) setTimeout(() => swipeRight(), 2000)
+	if (UIWindow.element === undefined) setTimeout(() => swipeRight(), 2000)
 
 	var timeout: NodeJS.Timeout
 
@@ -83,6 +83,9 @@ export function IOSSimulator({ children, instructions }: React.PropsWithChildren
 		UIWindow.log()
 	}
 
+	function reset() {
+	}
+
 	interface VoiceOverAnnouncementPropts {
 		announcement: string
 	}
@@ -114,7 +117,7 @@ export function IOSSimulator({ children, instructions }: React.PropsWithChildren
 		</div>)
 	}
 
-	console.log("Called")
+	console.log("Rerender")
 
 	return (<div className="moba11y-ios-simulator">
 		<section className="device">
@@ -131,7 +134,7 @@ export function IOSSimulator({ children, instructions }: React.PropsWithChildren
 							<div className="controls">
 								<CTAButton onClick={home}>Home</CTAButton>
 								<CTAButton onClick={swipeUp}><UpArrow /></CTAButton>
-								<div></div>
+								<CTAButton onClick={reset}>Reset</CTAButton>
 								<CTAButton onClick={swipeLeft}><LeftArrow /></CTAButton>
 								<CTAButton onClick={rotor}>
 									<RotatingArrows />
