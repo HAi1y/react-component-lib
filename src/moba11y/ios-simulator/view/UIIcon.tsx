@@ -13,20 +13,23 @@ export interface UIIconProps {
 	onClick?: () => any
 }
 
-export function UIIcon({ label, classes = new Classes, href, a11yElement, children }: React.PropsWithChildren<UIIconProps>) {
+export function UIIcon({ label, onClick, classes = new Classes, href, a11yElement, children }: React.PropsWithChildren<UIIconProps>) {
 
 	if (!a11yElement) {
 		a11yElement = UIWindow.newElement()
 		a11yElement.label = label
 
-		if (onclick) {
+		if (onClick) {
 			a11yElement.hint = "Activate to perform default action."
 		}
 	}
 
 	a11yElement.actions.push(new UIAccessibilityCustomAction(
 		"Default",
-		() => { if (window !== undefined && href) window.location.href = href }
+		() => {
+			if (window !== undefined && href) window.location.href = href
+			if (onClick) onClick()
+		}
 	))
 
 	return (
