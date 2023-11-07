@@ -16,8 +16,8 @@ export { CTAButton, ToggleButton }
 import { IOSSimulator } from "./moba11y/ios-simulator";
 export { IOSSimulator }
 
-import { UITextView, UITitle } from "./moba11y/ios-simulator/view/UITextView";
-export { UITextView, UITitle }
+import { UITextView, UITitle, FontStyle } from "./moba11y/ios-simulator/view/UITextView";
+export { UITextView, UITitle, FontStyle }
 
 import { UIIcon } from "./moba11y/ios-simulator/view/UIIcon";
 export { UIIcon }
@@ -36,3 +36,6 @@ export { Classes }
 
 import { UICarousel } from "./moba11y/ios-simulator/view/UICarousel";
 export { UICarousel }
+
+import { UIButton } from "./moba11y/ios-simulator/view/UIButton";
+export { UIButton }

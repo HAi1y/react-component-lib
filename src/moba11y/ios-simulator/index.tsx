@@ -106,20 +106,17 @@ export function IOSSimulator({ children, instructions }: React.PropsWithChildren
 	function VoiceOverAnnouncement({ announcement }: VoiceOverAnnouncementPropts) {
 
 		if (speech) {
+
 			var msg = new SpeechSynthesisUtterance();
 			msg.text = announcement
 
-			if (speech.pending) {
-				speech.cancel()
+			speech.cancel()
 
-				if (timeout) {
-					clearTimeout(timeout)
-				}
-
-				timeout = setTimeout(() => speech && speech.speak(msg), 250);
-			} else {
-				speech.speak(msg)
+			if (timeout) {
+				clearTimeout(timeout)
 			}
+
+			timeout = setTimeout(() => speech && speech.speak(msg), 250);
 		}
 
 		return (<div className="voiceover-announcement">
@@ -165,7 +162,7 @@ export function IOSSimulator({ children, instructions }: React.PropsWithChildren
 				</div>
 			</div>
 		</section>
-		<section>
+		<section className="instructions">
 			{instructions}
 		</section>
 	</div>)

@@ -33,7 +33,6 @@ export class UIWindow {
 	}
 
 	static log(): any {
-		this.element?.log()
 
 		var e = this.firstElement
 
@@ -46,8 +45,6 @@ export class UIWindow {
 			e = e.nextElement
 		}
 
-		console.log(result)
-
 		e = this.lastElement
 		result = " - "
 		i = 0;
@@ -58,8 +55,6 @@ export class UIWindow {
 		}
 
 		console.log(result)
-		this.element?.log()
-
 	}
 
 	static focusPrevious(): UIAccessibilityElement {

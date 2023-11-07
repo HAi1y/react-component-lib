@@ -8,7 +8,9 @@
     "build": "parcel build index.html"
   },
   "dependencies": {
+    "parcel-bundler": "^1.12.5",
     "react-app-polyfill": "^1.0.0",
+    "react-markdown": "8.0.7",
     "react-router-dom": "^6.16.0"
   },
   "alias": {
@@ -19,7 +21,9 @@
   "devDependencies": {
     "@types/react": "^16.9.11",
     "@types/react-dom": "^16.8.4",
+    "marked": "^9.1.5",
     "parcel": "1.12.3",
+    "parcel-plugin-markdown-it": "^1.0.0",
     "typescript": "^3.4.5"
   }
 }

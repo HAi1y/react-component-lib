@@ -1,0 +1,1 @@
+The iOS Accessibility Simulator allows you to experience various assistive technologies on the iOS Platform without having to own an iOS device. It also allows the content to be accompanied by instructions and details that are difficult to fit into a learning experience on the phone. 

@@ -49,7 +49,7 @@ export function UITitle({ text, fontStyle = FontStyle.title, classes = new Class
 	return (
 		<div>
 			<UIView a11yElement={a11yElement} classes={classes}>
-				<h2 className={classes.join(' ')}>{text}</h2>
+				<h2>{text}</h2>
 			</UIView>
 		</div>
 	)

@@ -5,11 +5,12 @@ import { UIView } from './UIView';
 import { UIAccessibilityTrait } from '../UIAccessibilityTrait';
 import { UIWindow } from '../UIWindow';
 import { Classes } from './Classes';
+import { UIAccessibilityCustomAction } from '../UIAccessibilityCustomAction';
 
 export interface UIButtonProps {
 	text: string
 	fontStyle?: FontStyle
-	classes: Classes
+	classes?: Classes
 	a11yElement?: UIAccessibilityElement
 	onClick?: () => any
 }
@@ -22,13 +23,15 @@ export function UIButton({ text, fontStyle = FontStyle.body, classes = new Class
 
 		if (!onClick) {
 			a11yElement.traits.push(UIAccessibilityTrait.notEnabled)
+		} else {
+			a11yElement.actions.push(new UIAccessibilityCustomAction("default", onClick))
 		}
 	}
 
 	classes.push(fontStyle)
 	return (
 		<UIView classes={classes} a11yElement={a11yElement}>
-			<button onClick={onClick}>{text}</button>
+			<button className="moba11y-button">{text}</button>
 		</UIView>
 	)
 }
