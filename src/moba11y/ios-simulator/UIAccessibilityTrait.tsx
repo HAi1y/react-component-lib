@@ -1,12 +1,14 @@
 import { TagProps } from "../components/Tag"
 
+
 export enum UIAccessibilityTrait {
 	button = "Button",
 	link = "Link",
 	staticText = "StaticText",
 	notEnabled = "NotEnabled",
 	none = "none",
-	adjustable = "adjustable"
+	adjustable = "adjustable",
+	heading = "heading"
 }
 
 export class UIAccessibilityTraits extends Array<UIAccessibilityTrait> {

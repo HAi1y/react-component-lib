@@ -37,5 +37,14 @@ export { Classes }
 import { UICarousel } from "./moba11y/ios-simulator/view/UICarousel";
 export { UICarousel }
 
-import { UIButton } from "./moba11y/ios-simulator/view/UIButton";
-export { UIButton }
+import { UIButton, UIButtonNav } from "./moba11y/ios-simulator/view/UIButton";
+export { UIButton, UIButtonNav }
+
+import { UITextFieldProps, UITextField, UITextField2 } from "./moba11y/ios-simulator/view/UITextField";
+export { UITextFieldProps, UITextField, UITextField2 }
+
+import { UIAccessibilityCustomAction } from "./moba11y/ios-simulator/UIAccessibilityCustomAction";
+export { UIAccessibilityCustomAction }
+
+import { UIView } from "./moba11y/ios-simulator/view/UIView";
+export { UIView }

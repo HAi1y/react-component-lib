@@ -2,11 +2,12 @@ import * as React from 'react';
 
 export interface TagProps {
 	title: string;
+	active?: boolean
 }
 
-export const Tag = ({ title }: TagProps) => {
+export const Tag = ({ title, active = false }: TagProps) => {
 	return (
-		<span className="moba11y-tag">{title}</span>
+		<span className={"moba11y-tag" + (active ? " active" : "")}>{title}</span>
 	)
 }
 
@@ -16,8 +17,8 @@ export interface TagListProps {
 
 export const TagList = ({ tags }: TagListProps) => {
 	return (<ul className={"moba11y-tag-list"}>
-		{tags.map(({ title }, index) => {
-			return (<li key={index}><Tag title={title} /></li>)
-		})}
+		{tags ? tags.map(({ title, active }, index) => {
+			return (<li key={index} className={active ? "active" : ""}><Tag title={title} active={active} /></li>)
+		}) : <></>}
 	</ul>)
 }

@@ -24,7 +24,8 @@ export function UIButton({ text, fontStyle = FontStyle.body, classes = new Class
 		if (!onClick) {
 			a11yElement.traits.push(UIAccessibilityTrait.notEnabled)
 		} else {
-			a11yElement.actions.push(new UIAccessibilityCustomAction("default", onClick))
+			a11yElement.actions.push(new UIAccessibilityCustomAction("Default", onClick))
+			a11yElement.hint = "Default action available."
 		}
 	}
 
@@ -32,6 +33,38 @@ export function UIButton({ text, fontStyle = FontStyle.body, classes = new Class
 	return (
 		<UIView classes={classes} a11yElement={a11yElement}>
 			<button className="moba11y-button">{text}</button>
+		</UIView>
+	)
+}
+
+export interface UIButtonNavProps {
+	text: string
+	fontStyle?: FontStyle
+	classes?: Classes
+	a11yElement?: UIAccessibilityElement
+	href?: string
+}
+
+export function UIButtonNav({ text, fontStyle = FontStyle.body, classes = new Classes, a11yElement, href }: UIButtonNavProps) {
+
+	if (!a11yElement) {
+		a11yElement = UIWindow.newElement()
+		a11yElement.label = text
+
+		if (!href) {
+			a11yElement.traits.push(UIAccessibilityTrait.notEnabled)
+		} else {
+			a11yElement.actions.push(new UIAccessibilityCustomAction(
+				"Default", () => { if (window !== undefined && href) window.location.href = href }
+			))
+			a11yElement.hint = "Default action available."
+		}
+	}
+
+	classes.push(fontStyle)
+	return (
+		<UIView classes={classes} a11yElement={a11yElement}>
+			<button className="moba11y-button nav">{text}</button>
 		</UIView>
 	)
 }

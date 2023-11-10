@@ -58,7 +58,6 @@ footer {
 }
 
 body {
-	font-size: 1.1em;
 	min-height: 100vh;
 }
 
@@ -343,13 +342,6 @@ button.moba11y-button {
 	border-radius: 8px;
 }
 
-button.moba11y-button:hover {
-	color: var(--color-primary);
-	background-color: var(--color-on-primary);
-	border-radius: 8px;
-	border: 2px solid var(--color-primary);
-}
-
 /* ---------- iOS Simulator ----------  */
 .moba11y-ios-simulator {
 	display: flex;
@@ -382,10 +374,15 @@ div.screen {
 	min-height: 800px;
 }
 
+div.screen,
+div.screen label,
+div.screen input {
+	cursor: pointer;
+}
+
 div.screen .grid-layout {
 	margin: 0 auto;
 }
-
 
 div.screen,
 div.simulator,
@@ -447,6 +444,10 @@ ul.moba11y-tag-list li {
 	border-width: 1px;
 	border-color: var(--color-primary);
 	border-radius: var(--border-radius);
+}
+
+ul.moba11y-tag-list li.active {
+	border-style: dashed;
 }
 
 .moba11y-tag-list li span {
@@ -530,19 +531,17 @@ div.simulator div.voiceover-controls {
 
 
 /* ---------- iOS Simulator ----------  */
-.ios.large-title {
-	font-size: 2em;
-}
-
-.ios.title-1 {
+.ios.large-title,
+.ios.large-title h2 {
 	font-size: 1.3em;
 }
 
-.ios.title-2 {
+.ios.title-1,
+.ios.title-1 h2 {
 	font-size: 1.2em;
 }
 
-.ios.title-3 {
+.ios.title-2 {
 	font-size: 1.1em;
 }
 
@@ -555,23 +554,23 @@ div.simulator div.voiceover-controls {
 }
 
 .ios.callout {
-	font-size: 13px;
+	font-size: .8em;
 }
 
 .ios.subhead {
-	font-size: 12px;
+	font-size: .8em;
 }
 
 .ios.footnote {
-	font-size: 12px;
+	font-size: .8em;
 }
 
 .ios.caption-1 {
-	font-size: 11px;
+	font-size: .8em;
 }
 
 .ios.caption-2 {
-	font-size: 11px;
+	font-size: .8em;
 }
 
 .screen div {
@@ -669,4 +668,19 @@ blockquote p {
 	.kg-callout-text {
 		margin: auto;
 	}
+}
+
+.ios.text-field {
+	margin: .5em;
+}
+
+.ios.text-field div,
+.ios.text-field label {
+	margin: auto 4px;
+}
+
+.instructions ol {
+	list-style: auto;
+	list-style-position: inside;
+	margin: auto;
 }

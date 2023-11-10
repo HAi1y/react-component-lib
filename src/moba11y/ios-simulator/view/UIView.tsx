@@ -13,27 +13,33 @@ export function UIView({ classes = new Classes, a11yElement, children }: React.P
 	classes.addClass("ios")
 	classes.addClass("accessibility-element")
 
-	const [isAccessibilityFocused, setIsAccessibilityFocused] = React.useState(false)
+	if (a11yElement !== null) {
 
-	a11yElement.setIsAccessibilityFocused = setIsAccessibilityFocused
+		const [isAccessibilityFocused, setIsAccessibilityFocused] = React.useState(false)
 
-	if (isAccessibilityFocused) {
-		classes.addClass("accessibility-focus")
-	} else {
-		classes.removeClass("accessibility-focus")
+		a11yElement.setIsAccessibilityFocused = setIsAccessibilityFocused
+
+		if (isAccessibilityFocused) {
+			classes.addClass("accessibility-focus")
+		} else {
+			classes.removeClass("accessibility-focus")
+		}
+
+		React.useEffect(() => {
+			UIWindow.add(a11yElement)
+
+			return (() => {
+				UIWindow.remove(a11yElement)
+			})
+		})
 	}
 
-
-	React.useEffect(() => {
-		UIWindow.add(a11yElement)
-
-		return (() => {
-			UIWindow.remove(a11yElement)
-		})
-	})
+	function onHover() {
+		UIWindow.focus(a11yElement)
+	}
 
 	return (
-		<div className={classes.toClassName()}>
+		<div className={classes.toClassName()} onMouseEnter={onHover}>
 			{children}
 		</div>
 	)

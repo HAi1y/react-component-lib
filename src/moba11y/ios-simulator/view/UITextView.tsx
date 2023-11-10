@@ -20,7 +20,7 @@ export interface UITextViewProps {
 
 export function UITextView({ text, fontStyle = FontStyle.body, classes = new Classes, a11yElement }: UITextViewProps) {
 
-	if (!a11yElement) {
+	if (a11yElement === undefined) {
 		a11yElement = UIWindow.newElement()
 		a11yElement.label = text
 		a11yElement.traits.push(UIAccessibilityTrait.none)
@@ -40,7 +40,7 @@ export function UITitle({ text, fontStyle = FontStyle.title, classes = new Class
 	if (!a11yElement) {
 		a11yElement = UIWindow.newElement()
 		a11yElement.label = text
-		a11yElement.traits.push(UIAccessibilityTrait.none)
+		a11yElement.traits.push(UIAccessibilityTrait.heading)
 	}
 
 	classes.push(fontStyle);

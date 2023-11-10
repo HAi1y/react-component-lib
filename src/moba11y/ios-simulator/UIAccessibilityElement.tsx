@@ -2,6 +2,7 @@ import React from "react"
 import { TagList } from "../components/Tag"
 import { UIAccessibilityTraits } from "./UIAccessibilityTrait"
 import { UIAccessibilityCustomActions } from "./UIAccessibilityCustomAction"
+import { Rotor } from "./IOSSimulator"
 
 export class UIAccessibilityElement {
 
@@ -9,6 +10,7 @@ export class UIAccessibilityElement {
 	label?: string
 	value?: string
 	hint?: string
+	isEditing?: boolean
 	increment?: () => any
 	decrement?: () => any
 	traits: UIAccessibilityTraits = new UIAccessibilityTraits
@@ -16,6 +18,7 @@ export class UIAccessibilityElement {
 	hidden = false
 	nextElement?: UIAccessibilityElement
 	previousElement?: UIAccessibilityElement
+	rotor: Rotor = new Rotor
 
 	next(element?: UIAccessibilityElement) {
 		this.nextElement = element
@@ -32,13 +35,15 @@ export class UIAccessibilityElement {
 		value?: string,
 		hint?: string,
 		traits?: UIAccessibilityTraits,
-		actions?: UIAccessibilityCustomActions
+		actions?: UIAccessibilityCustomActions,
+		rotor?: Rotor
 	) {
 		this.label = label
 		this.value = value
 		this.hint = hint
 		traits?.forEach(trait => this.traits.push(trait))
 		actions?.forEach(action => this.actions.push(action))
+		rotor?.forEach(setting => this.rotor.push(setting))
 	}
 
 	toProps() {
@@ -59,6 +64,7 @@ export class UIAccessibilityElement {
 				<li><span><strong>Value:</strong></span>{this.value}</li>
 				<li><span><strong>Hint:</strong></span>{this.hint}</li>
 				<li><span><strong>Actions:</strong></span><TagList tags={this.actions.tags()}></TagList></li>
+				<li><span><strong>Rotor:</strong></span><TagList tags={this.rotor.tags()}></TagList></li>
 			</ul>
 		</div>)
 	}
@@ -66,7 +72,8 @@ export class UIAccessibilityElement {
 	toAnnouncement() {
 		var announcement = this.label ? this.label : "";
 		announcement.concat(this.traits && this.traits.length > 0 ? ", " + this.traits.join(' ') : "")
-		announcement += this.value ? ", " + this.value : ""
+		announcement += this.value ? (this.label ? ", " : "") + this.value : ""
+		announcement += this.hint ? (this.value || this.label ? ", " : "") + this.hint : ""
 		return announcement
 	}
 

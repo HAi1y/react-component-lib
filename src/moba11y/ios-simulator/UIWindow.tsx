@@ -9,6 +9,10 @@ export class UIWindow {
 	private static insertionPoint?: UIAccessibilityElement
 	static element?: UIAccessibilityElement
 
+	static onFocus?: (element: UIAccessibilityElement) => any
+
+	static onAnnouncement?: (message: string) => any
+
 	static accessibilityFocus(): UIAccessibilityElement {
 
 		if (UIWindow.element === undefined) {
@@ -32,56 +36,61 @@ export class UIWindow {
 		)
 	}
 
-	static log(): any {
+	static log(reverse?: boolean): any {
 
-		var e = this.firstElement
-
-		var i = 0
 
 		var result = " - "
+		var i = 0
 
-		while (e && i++ < 10) {
-			result += e.label + " - "
-			e = e.nextElement
-		}
+		if (reverse) {
+			var e = this.lastElement
 
-		e = this.lastElement
-		result = " - "
-		i = 0;
+			while (e && i++ < 10) {
+				result += e.label + " - "
+				e = e.previousElement
+			}
+		} else {
+			var e = this.firstElement
 
-		while (e && i++ < 10) {
-			result += e.label + " - "
-			e = e.previousElement
+			while (e && i++ < 10) {
+				result += e.label + " - "
+				e = e.nextElement
+			}
 		}
 
 		console.log(result)
 	}
 
-	static focusPrevious(): UIAccessibilityElement {
+	static announce(message: string) {
+		if (UIWindow.onAnnouncement) UIWindow.onAnnouncement(message)
+	}
+
+	static focus(element: UIAccessibilityElement) {
+
+		if (UIWindow.element) UIWindow.element.removeAccessibilityFocus()
+
+		UIWindow.element = element
+
+		if (UIWindow.element) UIWindow.element.requestAccessibilityFocus()
+
+		if (element && UIWindow.onFocus) UIWindow.onFocus(element)
+	}
+
+	static focusPrevious() {
 
 		if (UIWindow.element === undefined) return this.defaultElement()
-
-		if (UIWindow.element.previousElement) {
-			UIWindow.element.removeAccessibilityFocus()
-			UIWindow.element = UIWindow.element.previousElement
-			UIWindow.element.requestAccessibilityFocus()
-		}
+		if (UIWindow.element.previousElement) this.focus(UIWindow.element.previousElement)
 
 		return UIWindow.element
 	}
 
-	static focusNext(): UIAccessibilityElement {
+	static focusNext() {
 
 		if (UIWindow.element === undefined) {
-			UIWindow.element = this.firstElement ? this.firstElement : this.defaultElement()
-			UIWindow.element.requestAccessibilityFocus()
+			UIWindow.focus(this.firstElement ? this.firstElement : this.defaultElement())
 		} else if (UIWindow.element.nextElement) {
-			UIWindow.element.removeAccessibilityFocus()
-			UIWindow.element = UIWindow.element.nextElement
-			UIWindow.element.requestAccessibilityFocus()
+			UIWindow.focus(UIWindow.element.nextElement)
 		}
-
-		return UIWindow.element
 	}
 
 	static newElement() {
@@ -90,7 +99,24 @@ export class UIWindow {
 
 	static add(a11yElement: UIAccessibilityElement): UIAccessibilityElement {
 
-		console.log("Add: " + a11yElement.label + " To: " + (this.insertionPoint ? this.insertionPoint?.label : "Start") + " First: " + (this.firstElement ? this.firstElement?.label : "undefined"))
+		console.log("Add: " + a11yElement.label)
+
+		console.log("Next: " + a11yElement.nextElement?.label)
+
+		if (a11yElement.nextElement || a11yElement.previousElement) {
+			var nextElement = a11yElement.nextElement
+			var previousElement = a11yElement.previousElement
+
+			if (previousElement) {
+				previousElement.nextElement = a11yElement
+			}
+
+			if (nextElement) {
+				nextElement.previousElement = a11yElement
+			}
+
+			return a11yElement
+		}
 
 		if (this.firstElement === undefined) {
 			this.firstElement = a11yElement
@@ -113,12 +139,6 @@ export class UIWindow {
 			}
 		}
 
-		if (this.element?.label === a11yElement.label) {
-			this.element = a11yElement
-		}
-
-		this.log()
-
 		return a11yElement
 	}
 
@@ -138,10 +158,5 @@ export class UIWindow {
 		}
 
 		this.insertionPoint = element.previousElement
-		element.nextElement = undefined
-		element.previousElement = undefined
-
-		this.log()
 	}
-
 }

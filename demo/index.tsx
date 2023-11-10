@@ -5,6 +5,7 @@ import { NavigationSection, TagList, PostList, HamburgerApp, CTAButton, UIPager,
 import "../src/moba11y/styles.css"
 import Tutorial from './apps/Tutorial';
 import Home from './apps/Home';
+import TextFields from './apps/TextFields';
 
 const navigation: Array<NavigationSection> = [{
 	heading: "Site",
@@ -32,7 +33,10 @@ function Applications({ apps }) {
 
 const App = () => {
 
-	var apps = { ["getting-started"]: new Tutorial() }
+	var apps = {
+		["getting-started"]: new Tutorial(),
+		["text-fields"]: new TextFields()
+	}
 
 	return (
 		<HamburgerApp title={"iOS Accessibility Simulator"} navigation={navigation} icon="https://moba11y.ghost.io/content/images/2023/10/Screen-Shot-2023-05-09-at-3.33.40-PM-2.png" location={""}>
