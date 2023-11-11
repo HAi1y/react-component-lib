@@ -1,21 +1,14 @@
 import React = require("react");
-import Icons from "../../components/Icons";
-import Application from "../Application";
-import Intro from "./Intro";
-import Linear from "./Linear";
+import Intro from "./Intro/Intro";
+import Linear from "./Linear/Linear";
+import { useParams } from "react-router-dom";
 
-export default class Tutorial extends Application {
+export default function Tutorial() {
 
-	public icon = Icons.Tutorial({ text: "Start Here", href: "/app/getting-started/intro" })
+	const { screen } = useParams()
 
-	public content = {
+	return ({
 		"intro": <Intro />,
 		"linear": <Linear />
-	}
-
-	public name: "getting-started"
-
-	constructor() {
-		super()
-	}
+	}[screen])
 }

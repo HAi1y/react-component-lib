@@ -21,9 +21,7 @@ export class Rotor extends Array<RotorSettings> {
 	tags(): Array<TagProps> {
 		const result: Array<TagProps> = []
 		this.forEach((label, index) => {
-			console.log("Index: " + index + " This Index: " + this.index)
 			result.push({ title: label, active: (index === this.index) })
-			console.log(result)
 		})
 
 		return result
@@ -142,6 +140,13 @@ export function IOSSimulator({ children, instructions }: React.PropsWithChildren
 	UIWindow.updateRotor = updateRotor
 
 	UIWindow.onFocus = (element: UIAccessibilityElement) => {
+
+		if (element.actions.length === 0) {
+			UIWindow.hiddenControls.activate = true
+		} else {
+			UIWindow.hiddenControls.activate = false
+		}
+
 		setAccessibilityFocus(element)
 		setAccessibilityAnnouncement(element.toAnnouncement())
 		if (element.rotor) setRotor(element.rotor)
@@ -229,6 +234,22 @@ export function IOSSimulator({ children, instructions }: React.PropsWithChildren
 		</div>)
 	}
 
+	function VoiceOverControls() {
+		return (<div className="voiceover-controls">
+			<div className="controls">
+				{UIWindow.hiddenControls.home ? <div /> : <CTAButton onClick={home}>Home</CTAButton>}
+				{UIWindow.hiddenControls.swipeUp ? <div /> : <CTAButton onClick={swipeUp}><UpArrow /></CTAButton>}
+				{UIWindow.hiddenControls.reset ? <div /> : <CTAButton onClick={reset}>Reset</CTAButton>}
+				{UIWindow.hiddenControls.swipeLeft ? <div /> : <CTAButton onClick={swipeLeft}><LeftArrow /></CTAButton>}
+				{UIWindow.hiddenControls.twist ? <div /> : <CTAButton onClick={twist}><RotatingArrows /></CTAButton>}
+				{UIWindow.hiddenControls.swipeRight ? <div /> : <CTAButton onClick={swipeRight}><RightArrow /></CTAButton>}
+				{UIWindow.hiddenControls.debug ? <div /> : <CTAButton onClick={debug}>Debug</CTAButton>}
+				{UIWindow.hiddenControls.swipeDown ? <div /> : <CTAButton onClick={swipeDown}><DownArrow /></CTAButton>}
+				{UIWindow.hiddenControls.activate ? <div /> : <CTAButton onClick={activate}>Activate</CTAButton>}
+			</div>
+		</div>)
+	}
+
 	function onKeyDown(event: KeyboardEvent) {
 
 		var captured = true;
@@ -270,21 +291,7 @@ export function IOSSimulator({ children, instructions }: React.PropsWithChildren
 				<div className="simulator">
 					<h2>VoiceOver</h2>
 					<div>
-						<div className="voiceover-controls">
-							<div className="controls">
-								<CTAButton onClick={home}>Home</CTAButton>
-								<CTAButton onClick={swipeUp}><UpArrow /></CTAButton>
-								<CTAButton onClick={reset}>Reset</CTAButton>
-								<CTAButton onClick={swipeLeft}><LeftArrow /></CTAButton>
-								<CTAButton onClick={twist}>
-									<RotatingArrows />
-								</CTAButton>
-								<CTAButton onClick={swipeRight}><RightArrow /></CTAButton>
-								<CTAButton onClick={debug}>Debug</CTAButton>
-								<CTAButton onClick={swipeDown}><DownArrow /></CTAButton>
-								<CTAButton onClick={activate}>Activate</CTAButton>
-							</div>
-						</div>
+						<VoiceOverControls />
 						<VoiceOverAnnouncement announcement={accessibilityAnnouncement} />
 					</div>
 				</div>

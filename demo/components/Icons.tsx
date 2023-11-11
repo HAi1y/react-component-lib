@@ -1,12 +1,19 @@
 import React = require("react");
 import { Classes, UIIcon } from "../../dist";
 
+export interface IconProps {
+	text: string
+	href: string
+	height: string
+	width: string
+	classes: Classes
+}
 export default class Icons {
 
-	static Tutorial = ({ text, href }) => {
+	static Tutorial = ({ text, href, height, width, classes }: IconProps) => {
 
-		return (<UIIcon label={text} classes={new Classes(["launcher-icon"])} href={href}>
-			<svg fill="#000000" height="64px" width="64px" version="1.1" id="Layer_1" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512">
+		return (<UIIcon label={text} classes={classes} href={href}>
+			<svg fill="#000000" height={height} width={width} version="1.1" id="Layer_1" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512">
 				<g>
 					<g>
 						<path d="M434.301,325.094c-7.45-0.746-14.898,1.37-20.791,5.844c-4.695-7.878-12.702-13.468-21.964-14.395
@@ -46,8 +53,15 @@ export default class Icons {
 		</UIIcon>)
 	}
 
-	static TextFields = ({ text, href }) => {
+	static TextFields = ({ text, href }: IconProps) => {
 		return (<UIIcon label={text} classes={new Classes(["launcher-icon"])} href={href}>
-			<svg xmlns="http://www.w3.org/2000/svg" data-name="Layer 1" height="64px" width="64px" viewBox="0 0 100 125" x="0px" y="0px"><path d="M2,86a12,12,0,0,0,23.26,4H74.74A12,12,0,1,0,90,74.74V25.26A12,12,0,1,0,74.74,10H25.26A12,12,0,1,0,10,25.26V74.74A12,12,0,0,0,2,86Zm84,4a4,4,0,1,1,4-4A4,4,0,0,1,86,90Zm0-80a4,4,0,1,1-4,4A4,4,0,0,1,86,10ZM25.26,18H74.74A12,12,0,0,0,82,25.26V74.74A12,12,0,0,0,74.74,82H25.26A12,12,0,0,0,18,74.74V25.26A12,12,0,0,0,25.26,18ZM14,10a4,4,0,1,1-4,4A4,4,0,0,1,14,10Zm0,72a4,4,0,1,1-4,4A4,4,0,0,1,14,82Z" /><path d="M34,46a4,4,0,0,0,4-4V38h8V62H42a4,4,0,0,0,0,8H58a4,4,0,0,0,0-8H54V38h8v4a4,4,0,0,0,8,0V34a4,4,0,0,0-4-4H34a4,4,0,0,0-4,4v8A4,4,0,0,0,34,46Z" /></svg>		</UIIcon>)
+			<svg xmlns="http://www.w3.org/2000/svg" data-name="Layer 1" height="64px" width="64px" viewBox="0 0 100 125" x="0px" y="0px"><path d="M2,86a12,12,0,0,0,23.26,4H74.74A12,12,0,1,0,90,74.74V25.26A12,12,0,1,0,74.74,10H25.26A12,12,0,1,0,10,25.26V74.74A12,12,0,0,0,2,86Zm84,4a4,4,0,1,1,4-4A4,4,0,0,1,86,90Zm0-80a4,4,0,1,1-4,4A4,4,0,0,1,86,10ZM25.26,18H74.74A12,12,0,0,0,82,25.26V74.74A12,12,0,0,0,74.74,82H25.26A12,12,0,0,0,18,74.74V25.26A12,12,0,0,0,25.26,18ZM14,10a4,4,0,1,1-4,4A4,4,0,0,1,14,10Zm0,72a4,4,0,1,1-4,4A4,4,0,0,1,14,82Z" /><path d="M34,46a4,4,0,0,0,4-4V38h8V62H42a4,4,0,0,0,0,8H58a4,4,0,0,0,0-8H54V38h8v4a4,4,0,0,0,8,0V34a4,4,0,0,0-4-4H34a4,4,0,0,0-4,4v8A4,4,0,0,0,34,46Z" /></svg>
+		</UIIcon>)
+	}
+
+	static Information = ({ text, href }) => {
+		return (<UIIcon label={text} classes={new Classes(["launcher-icon"])} href={href} >
+			<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"><path d="M12 2c5.514 0 10 4.486 10 10s-4.486 10-10 10-10-4.486-10-10 4.486-10 10-10zm0-2c-6.627 0-12 5.373-12 12s5.373 12 12 12 12-5.373 12-12-5.373-12-12-12zm-.001 5.75c.69 0 1.251.56 1.251 1.25s-.561 1.25-1.251 1.25-1.249-.56-1.249-1.25.559-1.25 1.249-1.25zm2.001 12.25h-4v-1c.484-.179 1-.201 1-.735v-4.467c0-.534-.516-.618-1-.797v-1h3v6.265c0 .535.517.558 1 .735v.999z" /></svg>
+		</UIIcon>)
 	}
 }

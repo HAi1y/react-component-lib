@@ -1,5 +1,5 @@
 import React = require("react");
-import { IOSSimulator, UITextView, UITitle, FontStyle, UIButton } from "../../../dist";
+import { IOSSimulator, UITextView, UITitle, FontStyle, UIButton } from "../../../../dist";
 import { html } from "./Intro.md"
 
 export default function Intro() {

@@ -53,17 +53,10 @@ footer {
 	min-height: var(--hamburger-height);
 }
 
-footer {
-	float: bottom;
-}
-
-body {
-	min-height: 100vh;
-}
-
 .viewport {
 	display: flex;
 	flex-direction: column;
+	min-height: 100vh;
 }
 
 main {

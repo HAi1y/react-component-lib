@@ -1,23 +1,19 @@
 import React = require("react");
 import Icons from "../../components/Icons";
-import Application from "../Application";
 import Intro from "./Intro/Intro";
 import FocusEverything from "./FocusEverything/FocusEverything";
 import FocusInputs from "./FocusInputs/FocusInputs";
+import { useParams } from "react-router-dom";
 
-export default class TextFields extends Application {
+export default function TextFields() {
 
-	public icon = Icons.TextFields({ text: "Text Fields", href: "/app/text-fields/intro" })
+	const { screen } = useParams()
 
-	public content = {
+	var content = {
 		"intro": <Intro />,
 		"focus-everything": <FocusEverything />,
 		"focus-inputs": <FocusInputs />
 	}
 
-	public name: "getting-started"
-
-	constructor() {
-		super()
-	}
+	return (content[screen])
 }

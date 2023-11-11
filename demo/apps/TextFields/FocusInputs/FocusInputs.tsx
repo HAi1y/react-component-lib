@@ -76,7 +76,7 @@ export function UITextField({ label, value, classes = new Classes, a11yElement, 
 	)
 }
 
-export default function FocusInputs() {
+export default function FocusInputs({ }) {
 
 	return (<IOSSimulator instructions={<div dangerouslySetInnerHTML={{ __html: html }} />}>
 		<UITitle text="Focus Inputs" />

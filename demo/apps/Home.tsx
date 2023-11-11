@@ -1,27 +1,35 @@
 import React = require("react")
-import { IOSSimulator, UIGridLayout, UITitle } from "../../dist"
+import { Classes, IOSSimulator, UIGridLayout, UITitle } from "../../dist"
+import { html } from "./Home.md"
+import Tutorial from "./Tutorial"
+import TextFields from "./TextFields"
+import Icons from "../components/Icons"
 
-export const Home = ({ apps }) => {
+export const Home = () => {
 
 	var style = {
 		width: "86px"
 	}
 
-	var appIcons = []
-
-	for (var key in apps) {
-		console.log(apps[key])
-		appIcons.push(apps[key].icon)
-	}
-
-	while (appIcons.length % 4 != 0) {
-		appIcons.push(<div style={style}></div>)
-	}
-
 	return (<IOSSimulator instructions={<div>"Instructions"</div>}>
 		<UITitle text="Home" />
 		<UIGridLayout >
-			{appIcons}
+			< Icons.Tutorial
+				text="Start Here"
+				href="/app/tutorial/intro"
+				width="64px"
+				height="64px"
+				classes={new Classes(["launcher-icon"])}
+			/>
+			< Icons.TextFields
+				text="Text Fields"
+				href="/app/text-fields/intro"
+				width="64px"
+				height="64px"
+				classes={new Classes(["launcher-icon"])}
+			/>
+			<div style={{ width: "72px", height: "64px" }} />
+			<div style={{ width: "72px", height: "64px" }} />
 		</UIGridLayout>
 	</IOSSimulator>)
 }

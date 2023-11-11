@@ -1,8 +1,12 @@
 import React = require("react");
-import { IOSSimulator, UITextView, UITitle, FontStyle, UIButton } from "../../../dist";
+import { IOSSimulator, UITextView, UITitle, FontStyle, UIButton, UIWindow } from "../../../../dist";
 import { html } from "./Linear.md"
 
 export default function Linear() {
+
+	UIWindow.hiddenControls.debug = true
+	UIWindow.hiddenControls.reset = true
+
 
 	return (<IOSSimulator instructions={<div dangerouslySetInnerHTML={{ __html: html }} />}>
 		<UITitle text="Your Account" />

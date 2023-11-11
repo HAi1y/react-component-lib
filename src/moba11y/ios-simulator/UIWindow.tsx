@@ -23,6 +23,18 @@ export class UIWindow {
 		UIWindow.rotor = rotor
 	}
 
+	static hiddenControls = {
+		home: false,
+		swipeUp: false,
+		reset: true,
+		swipeLeft: false,
+		twist: false,
+		swipeRight: false,
+		debug: true,
+		swipeDown: false,
+		activate: false
+	}
+
 	static accessibilityFocus(): UIAccessibilityElement {
 
 		if (UIWindow.element === undefined) {

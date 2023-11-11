@@ -16,7 +16,7 @@ export const HamburgerApp = ({ title, navigation, icon, children }: React.PropsW
 			<html lang="en" />
 			<link rel="icon" href={icon} type="png" />
 		</Helmet>
-		<body id="root" className="viewport">
+		<div className="viewport">
 			<header>
 				<HamburgerMenu title={title} navigation={navigation} />
 			</header>
@@ -24,7 +24,7 @@ export const HamburgerApp = ({ title, navigation, icon, children }: React.PropsW
 				{children}
 			</main>
 			<footer />
-		</body>
+		</div>
 	</>);
 }
 
