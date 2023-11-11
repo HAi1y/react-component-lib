@@ -7,7 +7,7 @@ export default function Intro() {
 	return (<IOSSimulator instructions={<div dangerouslySetInnerHTML={{ __html: html }} />}>
 		<UITitle text="Text Fields" />
 		<UITextField2 label="Username" value="GnarlyDawg84" />
-		<UITextField2 label="Password" value="A bad password" />
+		<UITextField2 label="Password" value="IceCream" />
 		<UITextField2 label="Birthday" value="yesterday" />
 		<UITextView text="This is not WCAG Compliant." />
 		<UITextView text="A minimum expectation should be that the Label and Value are announced together." />

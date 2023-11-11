@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react';
+import * as React from 'react';
 import { CTAButton } from '../components/Button';
 import { Speaker, RotatingArrows, UpArrow, LeftArrow, RightArrow, DownArrow } from '../components/Icons';
 import { UIWindow } from './UIWindow';
@@ -6,7 +6,7 @@ import { UIAccessibilityTrait } from './UIAccessibilityTrait';
 import { UIAccessibilityElement } from './UIAccessibilityElement';
 import { TagProps } from '../components/Tag';
 
-enum RotorSettings {
+export enum RotorSettings {
 	Headings = "Headings",
 	Adjustable = "Adjustable",
 	Words = "Words",
@@ -41,6 +41,12 @@ export class Rotor extends Array<RotorSettings> {
 		}
 	}
 
+	setTo(setting: RotorSettings) {
+		if (this.includes(setting)) {
+			this.index = this.indexOf(setting)
+		}
+	}
+
 	current() {
 		return this[this.index]
 	}
@@ -49,8 +55,13 @@ export class Rotor extends Array<RotorSettings> {
 		switch (this.current()) {
 			case RotorSettings.Adjustable: return this.adjustable(up, element); break;
 			case RotorSettings.Headings: return this.heading(up, element); break;
+			case RotorSettings.Characters: return this.character(up, element); break;
 			default: return "Rotor setting not supported yet"
 		}
+	}
+
+	character(up: boolean, element: UIAccessibilityElement): string | undefined {
+		return element.character(up, element)
 	}
 
 	adjustable(up: boolean, element: UIAccessibilityElement): string | undefined {
@@ -89,13 +100,14 @@ export class Rotor extends Array<RotorSettings> {
 		return (up ? "No Previous Heading Found" : "No Next Heading Found")
 	}
 
-	constructor() {
+	constructor(index: number = 0) {
 		super()
+		this.index = index
 		this.push(RotorSettings.Headings)
 	}
 
 	add(setting: RotorSettings) {
-		this.push(setting)
+		if (!this.includes(setting)) this.push(setting)
 		return this
 	}
 }
@@ -121,6 +133,13 @@ export function IOSSimulator({ children, instructions }: React.PropsWithChildren
 	if (window !== undefined) {
 		speech = window.speechSynthesis
 	}
+
+	var updateRotor = (r: Rotor) => {
+		rotor = r
+		setRotor(rotor)
+	}
+
+	UIWindow.updateRotor = updateRotor
 
 	UIWindow.onFocus = (element: UIAccessibilityElement) => {
 		setAccessibilityFocus(element)
@@ -232,7 +251,7 @@ export function IOSSimulator({ children, instructions }: React.PropsWithChildren
 		}
 	}
 
-	useEffect(() => {
+	React.useEffect(() => {
 		window.addEventListener("keydown", onKeyDown)
 
 		return () => {

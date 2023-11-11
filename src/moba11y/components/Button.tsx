@@ -10,6 +10,7 @@ export function ToggleButton({ children, className, description, onClick }: Reac
 
 	const buttonHandler = (event: React.MouseEvent<HTMLButtonElement>) => {
 		event.preventDefault();
+		event.stopPropagation();
 
 		const button: HTMLButtonElement = event.currentTarget;
 

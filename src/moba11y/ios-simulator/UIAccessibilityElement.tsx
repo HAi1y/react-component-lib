@@ -3,6 +3,7 @@ import { TagList } from "../components/Tag"
 import { UIAccessibilityTraits } from "./UIAccessibilityTrait"
 import { UIAccessibilityCustomActions } from "./UIAccessibilityCustomAction"
 import { Rotor } from "./IOSSimulator"
+import { UIWindow } from "./UIWindow"
 
 export class UIAccessibilityElement {
 
@@ -11,6 +12,7 @@ export class UIAccessibilityElement {
 	value?: string
 	hint?: string
 	isEditing?: boolean
+	index: number
 	increment?: () => any
 	decrement?: () => any
 	traits: UIAccessibilityTraits = new UIAccessibilityTraits
@@ -30,13 +32,29 @@ export class UIAccessibilityElement {
 		if (element) element.nextElement = this
 	}
 
+	character(up: boolean, element: UIAccessibilityElement): string | undefined {
+
+		var text = "" + element.label + element.value
+
+		if (text === undefined) return
+
+		if (!up && this.index < text.length) {
+			this.index++
+		} else if (up && this.index > 0) {
+			this.index--
+		}
+
+		return text.charAt(this.index)
+	}
+
 	constructor(
 		label?: string,
 		value?: string,
 		hint?: string,
 		traits?: UIAccessibilityTraits,
 		actions?: UIAccessibilityCustomActions,
-		rotor?: Rotor
+		rotor?: Rotor,
+		index: number = 0
 	) {
 		this.label = label
 		this.value = value
@@ -44,6 +62,7 @@ export class UIAccessibilityElement {
 		traits?.forEach(trait => this.traits.push(trait))
 		actions?.forEach(action => this.actions.push(action))
 		rotor?.forEach(setting => this.rotor.push(setting))
+		this.index = index
 	}
 
 	toProps() {
@@ -64,7 +83,7 @@ export class UIAccessibilityElement {
 				<li><span><strong>Value:</strong></span>{this.value}</li>
 				<li><span><strong>Hint:</strong></span>{this.hint}</li>
 				<li><span><strong>Actions:</strong></span><TagList tags={this.actions.tags()}></TagList></li>
-				<li><span><strong>Rotor:</strong></span><TagList tags={this.rotor.tags()}></TagList></li>
+				<li><span><strong>Rotor:</strong></span><TagList tags={this.rotor.tags() || []}></TagList></li>
 			</ul>
 		</div>)
 	}
@@ -92,6 +111,8 @@ export class UIAccessibilityElement {
 		} else {
 			console.log("Set Is Accessibilty Focused Undefined")
 		}
+
+		UIWindow.rotor = this.rotor
 	}
 
 	log() {

@@ -48,3 +48,6 @@ export { UIAccessibilityCustomAction }
 
 import { UIView } from "./moba11y/ios-simulator/view/UIView";
 export { UIView }
+
+import { RotorSettings, Rotor } from "./moba11y/ios-simulator/IOSSimulator";
+export { RotorSettings, Rotor }

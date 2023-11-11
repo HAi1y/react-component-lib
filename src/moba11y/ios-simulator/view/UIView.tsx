@@ -2,6 +2,7 @@ import * as React from 'react';
 import { UIAccessibilityElement } from '../UIAccessibilityElement';
 import { Classes } from './Classes';
 import { UIWindow } from '../UIWindow';
+import { RotorSettings } from '../IOSSimulator';
 
 export interface UIViewProps {
 	classes?: Classes
@@ -18,6 +19,7 @@ export function UIView({ classes = new Classes, a11yElement, children }: React.P
 		const [isAccessibilityFocused, setIsAccessibilityFocused] = React.useState(false)
 
 		a11yElement.setIsAccessibilityFocused = setIsAccessibilityFocused
+		a11yElement.rotor.add(RotorSettings.Characters)
 
 		if (isAccessibilityFocused) {
 			classes.addClass("accessibility-focus")

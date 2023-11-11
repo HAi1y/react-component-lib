@@ -1,3 +1,4 @@
+import { Rotor } from "./IOSSimulator";
 import { UIAccessibilityCustomAction, UIAccessibilityCustomActions } from "./UIAccessibilityCustomAction";
 import { UIAccessibilityElement } from "./UIAccessibilityElement";
 import { UIAccessibilityTrait, UIAccessibilityTraits } from "./UIAccessibilityTrait";
@@ -12,6 +13,15 @@ export class UIWindow {
 	static onFocus?: (element: UIAccessibilityElement) => any
 
 	static onAnnouncement?: (message: string) => any
+
+	static rotor?: Rotor
+
+	static updateRotor?: (rotor: Rotor) => any
+
+	static setRotor = (rotor: Rotor) => {
+		if (UIWindow.updateRotor) UIWindow.updateRotor(rotor)
+		UIWindow.rotor = rotor
+	}
 
 	static accessibilityFocus(): UIAccessibilityElement {
 
@@ -37,7 +47,6 @@ export class UIWindow {
 	}
 
 	static log(reverse?: boolean): any {
-
 
 		var result = " - "
 		var i = 0

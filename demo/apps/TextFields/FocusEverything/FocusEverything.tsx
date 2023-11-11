@@ -43,7 +43,7 @@ export default function FocusEverything() {
 	return (<IOSSimulator instructions={<div dangerouslySetInnerHTML={{ __html: html }} />}>
 		<UITitle text="Focus Everything" />
 		<UITextField label="Username" value="GnarlyDawg84" />
-		<UITextField label="Password" value="password" errors={["That is a terrible password.", "Not long enough."]} />
+		<UITextField label="Password" value="IceCream" errors={["That is a terrible password.", "Not long enough."]} />
 		<UITextField label="Birthday" value="yesterday" errors={["Expected format: MM/DD/YY"]} />
 		<div style={{ margin: "1em auto" }} >
 			<UIButtonNav text="Back" href="/app/text-fields/intro" />
