@@ -235,17 +235,22 @@ export function IOSSimulator({ children, instructions }: React.PropsWithChildren
 	}
 
 	function VoiceOverControls() {
+		var style = {
+			width: "72px",
+			height: "72px"
+		}
+
 		return (<div className="voiceover-controls">
 			<div className="controls">
-				{UIWindow.hiddenControls.home ? <div /> : <CTAButton onClick={home}>Home</CTAButton>}
-				{UIWindow.hiddenControls.swipeUp ? <div /> : <CTAButton onClick={swipeUp}><UpArrow /></CTAButton>}
-				{UIWindow.hiddenControls.reset ? <div /> : <CTAButton onClick={reset}>Reset</CTAButton>}
-				{UIWindow.hiddenControls.swipeLeft ? <div /> : <CTAButton onClick={swipeLeft}><LeftArrow /></CTAButton>}
-				{UIWindow.hiddenControls.twist ? <div /> : <CTAButton onClick={twist}><RotatingArrows /></CTAButton>}
-				{UIWindow.hiddenControls.swipeRight ? <div /> : <CTAButton onClick={swipeRight}><RightArrow /></CTAButton>}
-				{UIWindow.hiddenControls.debug ? <div /> : <CTAButton onClick={debug}>Debug</CTAButton>}
-				{UIWindow.hiddenControls.swipeDown ? <div /> : <CTAButton onClick={swipeDown}><DownArrow /></CTAButton>}
-				{UIWindow.hiddenControls.activate ? <div /> : <CTAButton onClick={activate}>Activate</CTAButton>}
+				{UIWindow.hiddenControls.home ? <div style={style} /> : <CTAButton onClick={home}>Home</CTAButton>}
+				{UIWindow.hiddenControls.swipeUp ? <div style={style} /> : <CTAButton onClick={swipeUp}><UpArrow /></CTAButton>}
+				{UIWindow.hiddenControls.reset ? <div style={style} /> : <CTAButton onClick={reset}>Reset</CTAButton>}
+				{UIWindow.hiddenControls.swipeLeft ? <div style={style} /> : <CTAButton onClick={swipeLeft}><LeftArrow /></CTAButton>}
+				{UIWindow.hiddenControls.twist ? <div style={style} /> : <CTAButton onClick={twist}><RotatingArrows /></CTAButton>}
+				{UIWindow.hiddenControls.swipeRight ? <div style={style} /> : <CTAButton onClick={swipeRight}><RightArrow /></CTAButton>}
+				{UIWindow.hiddenControls.debug ? <div style={style} /> : <CTAButton onClick={debug}>Debug</CTAButton>}
+				{UIWindow.hiddenControls.swipeDown ? <div style={style} /> : <CTAButton onClick={swipeDown}><DownArrow /></CTAButton>}
+				{UIWindow.hiddenControls.activate ? <div style={style} /> : <CTAButton onClick={activate}>Activate</CTAButton>}
 			</div>
 		</div>)
 	}

@@ -1,10 +1,11 @@
 import React = require("react");
 import { IOSSimulator, UITextView, UITitle, FontStyle, UIButton } from "../../../../dist";
-import { html } from "./Intro.md"
+import { meta, html } from "./Intro.md"
+import MarkdownContainer from "../../../components/MardownContainer";
 
 export default function Intro() {
 
-	return (<IOSSimulator instructions={<div dangerouslySetInnerHTML={{ __html: html }} />}>
+	return (<IOSSimulator instructions={<MarkdownContainer html={html} title={meta.title} />} >
 		<UITitle text="Introduction" />
 		<UITextView fontStyle={FontStyle.body} text="Screen readers allow users who are blind and low vision to hear structured announcements of on screen elements." />
 		<UITextView fontStyle={FontStyle.body} text="Simple swipe gestures allow expressive navigation of well structured information." />

@@ -78,12 +78,18 @@ export class UIAccessibilityElement {
 	toJsx(): React.ReactNode {
 		return (<div className="accessibility-element">
 			<ul>
-				<li><span><strong>Label:</strong></span><span>{this.label}</span></li>
-				<li><span><strong>Traits:</strong></span><TagList tags={this.traits.tags()} /></li>
-				<li><span><strong>Value:</strong></span>{this.value}</li>
-				<li><span><strong>Hint:</strong></span>{this.hint}</li>
-				<li><span><strong>Actions:</strong></span><TagList tags={this.actions.tags()}></TagList></li>
-				<li><span><strong>Rotor:</strong></span><TagList tags={this.rotor.tags() || []}></TagList></li>
+				{this.label ? <li><span><strong>Label:</strong></span><span>{this.label}</span></li> : <></>}
+				{this.traits && this.traits.length ?
+					<li><span><strong>Traits:</strong></span><TagList tags={this.traits.tags()} /></li> : <></>
+				}
+				{this.value ? <li><span><strong>Value:</strong></span>{this.value}</li> : <></>}
+				{this.hint ? <li><span><strong>Hint:</strong></span>{this.hint}</li> : <></>}
+				{this.actions && this.actions.length ?
+					<li><span><strong>Actions:</strong></span><TagList tags={this.actions.tags()}></TagList></li> : <></>
+				}
+				{this.rotor && this.rotor.tags().length ?
+					< li ><span><strong>Rotor:</strong></span><TagList tags={this.rotor.tags() || []}></TagList></li> : <></>
+				}
 			</ul>
 		</div>)
 	}
@@ -111,6 +117,9 @@ export class UIAccessibilityElement {
 		} else {
 			console.log("Set Is Accessibilty Focused Undefined")
 		}
+
+		UIWindow.hiddenControls.swipeRight = this.nextElement === undefined
+		UIWindow.hiddenControls.swipeLeft = this.previousElement === undefined
 
 		UIWindow.rotor = this.rotor
 	}

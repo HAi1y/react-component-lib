@@ -1,8 +1,6 @@
 ---
-layout: post
-title: Example title
+title: Tutorial
 ---
-## Getting Started
 
 The first step in getting started with VoiceOver is to practice moving focus around. Click the Right and Left arrows to move Accessibility Focus.
 

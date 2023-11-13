@@ -1,17 +1,21 @@
 import React = require("react")
-import { Classes, IOSSimulator, UIGridLayout, UITitle } from "../../dist"
-import { html } from "./Home.md"
-import Tutorial from "./Tutorial"
-import TextFields from "./TextFields"
+import { Classes, IOSSimulator, UIGridLayout, UITitle, UIWindow } from "../../dist"
+import { meta, html } from "./Home.md"
 import Icons from "../components/Icons"
+import MarkdownContainer from "../components/MardownContainer"
 
 export const Home = () => {
 
 	var style = {
-		width: "86px"
+		width: "72px"
 	}
 
-	return (<IOSSimulator instructions={<div>"Instructions"</div>}>
+	UIWindow.hiddenControls.home = true;
+	UIWindow.hiddenControls.twist = true;
+	UIWindow.hiddenControls.swipeUp = true;
+	UIWindow.hiddenControls.swipeDown = true;
+
+	return (<IOSSimulator instructions={<MarkdownContainer title={meta.title} html={html} />}>
 		<UITitle text="Home" />
 		<UIGridLayout >
 			< Icons.Tutorial
@@ -28,8 +32,8 @@ export const Home = () => {
 				height="64px"
 				classes={new Classes(["launcher-icon"])}
 			/>
-			<div style={{ width: "72px", height: "64px" }} />
-			<div style={{ width: "72px", height: "64px" }} />
+			<div style={style} />
+			<div style={style} />
 		</UIGridLayout>
 	</IOSSimulator>)
 }
