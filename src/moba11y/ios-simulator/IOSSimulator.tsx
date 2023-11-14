@@ -81,7 +81,7 @@ export class Rotor extends Array<RotorSettings> {
 
 	heading(up: boolean, element: UIAccessibilityElement): string | undefined {
 
-		var heading: UIAccessibilityElement | undefined = element
+		var heading = up ? element.previousElement : element.nextElement
 		var limit = 1000
 
 		while (heading) {
@@ -264,8 +264,9 @@ export function IOSSimulator({ children, instructions }: React.PropsWithChildren
 			case "ArrowLeft": swipeLeft(); break;
 			case "ArrowDown": swipeDown(); break;
 			case "ArrowUp": swipeUp(); break;
-			case "R": twist(); break;
-			case "H": home(); break;
+			case "r": twist(); break;
+			case "h": home(); break;
+			case "Enter": activate(); break;
 			default:
 				captured = false;
 		}

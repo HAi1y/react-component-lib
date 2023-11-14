@@ -35,7 +35,8 @@ export class UIAccessibilityElement {
 
 	character(up: boolean, element: UIAccessibilityElement): string | undefined {
 
-		var text = "" + element.label + element.value
+		var text = element.label ? element.label : "";
+		text += element.value ? element.value : ""
 
 		if (text === undefined) return
 
@@ -99,7 +100,7 @@ export class UIAccessibilityElement {
 					{this.label}
 				</ApiInfo>
 				<ApiInfo label="Traits:" href="https://appt.org/en/docs/ios/samples/accessibility-role">
-					<TagList tags={this.traits.tags()} />
+					{this.traits.tags().length > 0 ? <TagList tags={this.traits.tags()} /> : undefined}
 				</ApiInfo>
 				<ApiInfo label="Value:" href="https://appt.org/en/docs/ios/samples/accessibility-value">
 					{this.value}
@@ -108,10 +109,10 @@ export class UIAccessibilityElement {
 					{this.hint}
 				</ApiInfo>
 				<ApiInfo label="Actions:" href="https://appt.org/en/docs/ios/samples/accessibility-action">
-					<TagList tags={this.actions.tags()}></TagList>
+					{this.actions.tags().length > 0 ? <TagList tags={this.actions.tags()} /> : undefined}
 				</ApiInfo>
 				<ApiInfo label="Rotor:" href="https://support.apple.com/en-us/HT204783">
-					<TagList tags={this.rotor.tags()}></TagList>
+					{this.rotor.tags().length > 0 ? <TagList tags={this.rotor.tags()} /> : undefined}
 				</ApiInfo>
 			</ul>
 		</div>)
@@ -119,7 +120,7 @@ export class UIAccessibilityElement {
 
 	toAnnouncement() {
 		var announcement = this.label ? this.label : "";
-		announcement.concat(this.traits && this.traits.length > 0 ? ", " + this.traits.join(' ') : "")
+		if (this.traits && this.traits.length > 0) announcement.concat(", " + this.traits.join(' '))
 		announcement += this.value ? (this.label ? ", " : "") + this.value : ""
 		announcement += this.hint ? (this.value || this.label ? ", " : "") + this.hint : ""
 		return announcement

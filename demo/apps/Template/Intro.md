@@ -2,6 +2,8 @@
 layout: post
 title: Example title
 ---
+
+I have always wanted to allow designers, engineers, and accessibility experts to talk about Mobile Accessibility as effectively as they do about Web Accessibility. This course is about that. 
 ## Getting Started
 
 The first step in getting started with VoiceOver is to practice moving focus around. Click the Right and Left arrows to move Accessibility Focus.

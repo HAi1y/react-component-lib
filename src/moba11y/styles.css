@@ -570,9 +570,11 @@ div.simulator h2,
 div.inspector h2 {
 	font-size: 1.2em;
 	margin: .5em auto;
-	margin-bottom: 0;
 }
 
+div.inspector h2 {
+	margin-bottom: 0;
+}
 
 
 div.simulator div div h3 {

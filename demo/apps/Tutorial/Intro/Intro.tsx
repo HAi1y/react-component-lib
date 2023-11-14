@@ -1,18 +1,23 @@
 import React = require("react");
-import { IOSSimulator, UITextView, UITitle, FontStyle, UIButton } from "../../../../dist";
+import { IOSSimulator, UITextView, UITitle, FontStyle, UIButton, UIWindow } from "../../../../dist";
 import { meta, html } from "./Intro.md"
 import MarkdownContainer from "../../../components/MardownContainer";
 
 export default function Intro() {
 
+	UIWindow.hiddenControls.home = true
+	UIWindow.hiddenControls.swipeUp = true
+	UIWindow.hiddenControls.swipeDown = true
+	UIWindow.hiddenControls.twist = true
+	UIWindow.hiddenControls.swipeLeft = true
+
 	return (<IOSSimulator instructions={<MarkdownContainer html={html} title={meta.title} />} >
-		<UITitle text="Introduction" />
-		<UITextView fontStyle={FontStyle.body} text="Screen readers allow users who are blind and low vision to hear structured announcements of on screen elements." />
-		<UITextView fontStyle={FontStyle.body} text="Simple swipe gestures allow expressive navigation of well structured information." />
-		<UITextView fontStyle={FontStyle.body} text="Activate next to practice using different VoiceOver simulator controls." />
+		<UITitle text="Tutorial" />
+		<UITextView fontStyle={FontStyle.body} text="Swiping Right moves Accessibility Focus forward. " />
+		<UITextView fontStyle={FontStyle.body} text="Swiping Left moves Accessibility Focus backward." />
+		<UITextView fontStyle={FontStyle.body} text="Click the Right and Left Arrows to simulate these gestures. The corresponding keyboard keys also work!" />
 		<div style={{ margin: "0 auto" }}>
-			<UIButton text="Next" onClick={() => { if (window) window.location.href = "/app/getting-started/linear" }} />
+			<UIButton text="Next" onClick={() => { if (window) window.location.href = "/app/tutorial/headings" }} />
 		</div>
-		<UITextView fontStyle={FontStyle.body} text="Note: You can also use your keyboard!" />
 	</IOSSimulator>)
 }

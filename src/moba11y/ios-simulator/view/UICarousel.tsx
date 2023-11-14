@@ -12,8 +12,8 @@ export interface UICarouselProps {
 
 export function UICarousel({ label, views, a11yElement, classes = new Classes }: React.PropsWithChildren<UICarouselProps>) {
 
-	const initial = 0
-	const max = views.length - 1
+	const initial = 1
+	const max = views.length
 	var [current, setIndex] = React.useState(0);
 
 	classes.addClass("carousel")

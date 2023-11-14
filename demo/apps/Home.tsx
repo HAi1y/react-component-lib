@@ -19,7 +19,7 @@ export const Home = () => {
 		<UITitle text="Home" />
 		<UIGridLayout >
 			< Icons.Tutorial
-				text="Start Here"
+				text="Short Tutorial"
 				href="/app/tutorial/intro"
 				width="64px"
 				height="64px"

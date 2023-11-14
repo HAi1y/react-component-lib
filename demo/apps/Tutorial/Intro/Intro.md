@@ -1,19 +1,24 @@
 ---
-title: Tutorial
+title: Introduction
 ---
 
-The first step in getting started with VoiceOver is to practice moving focus around. Click the Right and Left arrows to move Accessibility Focus.
+The iOS Accessibility Simulator allows you to experience iOS Assistive Technology behaviors in a simple browser based environment. Currently the following features are supported.
 
-### Step 1: Swipe Right
-VoiceOver takes over the screeen allowing users to interact with gestures. Swipe Right moves Accessibility Focus foward.
+### VoiceOver
 
-> Hit the Right Arrow until Next is focused.
+VoiceOver is the screen reader for the iOS platform. Interact with the controls to simulate swipes in the corresponding direction.
 
-The right arrow simulates a user swiping right in VoiceOver. The left arrow behaves similarly in the other direction.
+1. **Right:** Swipe Right. Focus Forward.
+2. **Left:** Swipe Left. Focus Forward.
+3. **Rotor:** Bottle Cap. Cycle Rotor Setting.
+4. **Up:** Swipe Up. Depends on Rotor Setting.
+5. **Down:** Swipe Doen. Depends on Rotor Setting.
+6. **Home:** Back to the Launcher.
 
-### Step 2: Double Tap
-When the Black Focus Rectangle is on a control we consider it to have Accessibility Focus. Double tapping the screen activates the default action of the element with Accessibility Focus.
+Note: The Arrow Keys, Enter, H, and R also work. Without the limitations sometimes placed upon the UI for teaching purposes.
 
-> Activate to move to the next screen.
+### Accessibility Inspector
 
-This is the same in VoiceOver as Double Tapping the screen.
+The Accessibility Inspector allows you to explore the properties used in VoiceOver's calculation of an announcement. Setting these APIs to reasonable values is a fundamental part of building an accessible applicaiton. Considering the limitations of these APIs in design is also essential.
+
+Another features of the Accessibility Inspector is information icons that link off to technical advice about the corresponding API.
