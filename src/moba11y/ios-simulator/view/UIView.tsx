@@ -1,7 +1,7 @@
 import * as React from 'react';
-import { UIAccessibilityElement } from '../UIAccessibilityElement';
+import { UIAccessibilityElement } from './UIAccessibilityElement';
 import { Classes } from './Classes';
-import { UIWindow } from '../UIWindow';
+import { UIWindow } from './UIWindow';
 import { RotorSettings } from '../IOSSimulator';
 
 export interface UIViewProps {

@@ -16,9 +16,9 @@ export interface TagListProps {
 }
 
 export const TagList = ({ tags }: TagListProps) => {
-	return (<ul className={"moba11y-tag-list"}>
-		{tags ? tags.map(({ title, active }, index) => {
+	return (tags && tags.length > 0 ? <ul className={"moba11y-tag-list"}>
+		{tags.map(({ title, active }, index) => {
 			return (<li key={index} className={active ? "active" : ""}><Tag title={title} active={active} /></li>)
-		}) : <></>}
-	</ul>)
+		})}</ul> : <>None</>
+	)
 }

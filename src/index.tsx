@@ -28,7 +28,7 @@ export { UIGridLayout }
 import { UIPager } from "./moba11y/ios-simulator/view/UIPager";
 export { UIPager }
 
-import { UIWindow } from "./moba11y/ios-simulator/UIWindow";
+import { UIWindow } from "./moba11y/ios-simulator/view/UIWindow";
 export { UIWindow }
 
 import { Classes } from "./moba11y/ios-simulator/view/Classes";
@@ -43,7 +43,7 @@ export { UIButton, UIButtonNav }
 import { UITextFieldProps, UITextField, UITextField2 } from "./moba11y/ios-simulator/view/UITextField";
 export { UITextFieldProps, UITextField, UITextField2 }
 
-import { UIAccessibilityCustomAction } from "./moba11y/ios-simulator/UIAccessibilityCustomAction";
+import { UIAccessibilityCustomAction } from "./moba11y/ios-simulator/view/UIAccessibilityCustomAction";
 export { UIAccessibilityCustomAction }
 
 import { UIView } from "./moba11y/ios-simulator/view/UIView";
@@ -51,3 +51,6 @@ export { UIView }
 
 import { RotorSettings, Rotor } from "./moba11y/ios-simulator/IOSSimulator";
 export { RotorSettings, Rotor }
+
+import { MobA11yLogo } from "./moba11y/components/Logo";
+export { MobA11yLogo }

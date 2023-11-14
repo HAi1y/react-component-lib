@@ -1,9 +1,10 @@
 import React from "react"
-import { TagList } from "../components/Tag"
+import { TagList } from "../../components/Tag"
 import { UIAccessibilityTraits } from "./UIAccessibilityTrait"
 import { UIAccessibilityCustomActions } from "./UIAccessibilityCustomAction"
-import { Rotor } from "./IOSSimulator"
+import { Rotor } from "../IOSSimulator"
 import { UIWindow } from "./UIWindow"
+import Icons from "../../components/Icons"
 
 export class UIAccessibilityElement {
 
@@ -76,20 +77,42 @@ export class UIAccessibilityElement {
 	}
 
 	toJsx(): React.ReactNode {
+
+		interface ApiInfoProps {
+			label: string
+			href: string
+		}
+
+		function ApiInfo({ label, href, children }: React.PropsWithChildren<ApiInfoProps>) {
+			return (children ? <li>
+				<a href={href}>
+					<Icons.Information width="24px" height="24px" />
+					<span><strong>{label}</strong></span>
+				</a>
+				{children}
+			</li> : <></>)
+		}
+
 		return (<div className="accessibility-element">
 			<ul>
-				{this.label ? <li><span><strong>Label:</strong></span><span>{this.label}</span></li> : <></>}
-				{this.traits && this.traits.length ?
-					<li><span><strong>Traits:</strong></span><TagList tags={this.traits.tags()} /></li> : <></>
-				}
-				{this.value ? <li><span><strong>Value:</strong></span>{this.value}</li> : <></>}
-				{this.hint ? <li><span><strong>Hint:</strong></span>{this.hint}</li> : <></>}
-				{this.actions && this.actions.length ?
-					<li><span><strong>Actions:</strong></span><TagList tags={this.actions.tags()}></TagList></li> : <></>
-				}
-				{this.rotor && this.rotor.tags().length ?
-					< li ><span><strong>Rotor:</strong></span><TagList tags={this.rotor.tags() || []}></TagList></li> : <></>
-				}
+				<ApiInfo label="Label:" href="https://appt.org/en/docs/ios/samples/accessibility-label">
+					{this.label}
+				</ApiInfo>
+				<ApiInfo label="Traits:" href="https://appt.org/en/docs/ios/samples/accessibility-role">
+					<TagList tags={this.traits.tags()} />
+				</ApiInfo>
+				<ApiInfo label="Value:" href="https://appt.org/en/docs/ios/samples/accessibility-value">
+					{this.value}
+				</ApiInfo>
+				<ApiInfo label="Hint:" href="https://appt.org/en/docs/ios/samples/accessibility-hint">
+					{this.hint}
+				</ApiInfo>
+				<ApiInfo label="Actions:" href="https://appt.org/en/docs/ios/samples/accessibility-action">
+					<TagList tags={this.actions.tags()}></TagList>
+				</ApiInfo>
+				<ApiInfo label="Rotor:" href="https://support.apple.com/en-us/HT204783">
+					<TagList tags={this.rotor.tags()}></TagList>
+				</ApiInfo>
 			</ul>
 		</div>)
 	}

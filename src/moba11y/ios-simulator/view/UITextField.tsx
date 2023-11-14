@@ -1,9 +1,9 @@
 import * as React from 'react';
-import { UIAccessibilityElement } from '../UIAccessibilityElement';
+import { UIAccessibilityElement } from './UIAccessibilityElement';
 import { UIView } from './UIView';
-import { UIWindow } from '../UIWindow';
+import { UIWindow } from './UIWindow';
 import { Classes } from './Classes';
-import { UIAccessibilityCustomAction } from '../UIAccessibilityCustomAction';
+import { UIAccessibilityCustomAction } from './UIAccessibilityCustomAction';
 
 export interface UITextFieldProps {
 	label: string

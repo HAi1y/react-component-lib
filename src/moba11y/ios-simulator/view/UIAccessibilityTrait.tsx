@@ -1,4 +1,4 @@
-import { TagProps } from "../components/Tag"
+import { TagProps } from "../../components/Tag"
 
 
 export enum UIAccessibilityTrait {

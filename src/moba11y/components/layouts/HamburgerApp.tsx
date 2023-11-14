@@ -8,9 +8,10 @@ export interface HamburgerAppProps {
 	icon: string;
 	location: string;
 	navigation: Array<NavigationSection>;
+	footer?: React.ReactNode
 }
 
-export const HamburgerApp = ({ title, navigation, icon, children }: React.PropsWithChildren<HamburgerAppProps>) => {
+export const HamburgerApp = ({ title, navigation, icon, footer, children }: React.PropsWithChildren<HamburgerAppProps>) => {
 	return (<>
 		<Helmet>
 			<html lang="en" />
@@ -23,7 +24,7 @@ export const HamburgerApp = ({ title, navigation, icon, children }: React.PropsW
 			<main>
 				{children}
 			</main>
-			<footer />
+			{footer ? footer : <footer />}
 		</div>
 	</>);
 }

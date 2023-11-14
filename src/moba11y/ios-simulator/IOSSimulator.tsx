@@ -1,9 +1,9 @@
 import * as React from 'react';
 import { CTAButton } from '../components/Button';
 import { Speaker, RotatingArrows, UpArrow, LeftArrow, RightArrow, DownArrow } from '../components/Icons';
-import { UIWindow } from './UIWindow';
-import { UIAccessibilityTrait } from './UIAccessibilityTrait';
-import { UIAccessibilityElement } from './UIAccessibilityElement';
+import { UIWindow } from './view/UIWindow';
+import { UIAccessibilityTrait } from './view/UIAccessibilityTrait';
+import { UIAccessibilityElement } from './view/UIAccessibilityElement';
 import { TagProps } from '../components/Tag';
 
 export enum RotorSettings {

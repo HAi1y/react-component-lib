@@ -1,8 +1,8 @@
 import * as React from 'react';
-import { UIAccessibilityElement } from '../UIAccessibilityElement';
+import { UIAccessibilityElement } from './UIAccessibilityElement';
 import { UIView } from './UIView';
-import { UIWindow } from '../UIWindow';
-import { UIAccessibilityTrait } from '../UIAccessibilityTrait';
+import { UIWindow } from './UIWindow';
+import { UIAccessibilityTrait } from './UIAccessibilityTrait';
 import { Classes } from './Classes';
 
 

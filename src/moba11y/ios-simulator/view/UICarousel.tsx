@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { UIAccessibilityElement } from '../UIAccessibilityElement';
+import { UIAccessibilityElement } from './UIAccessibilityElement';
 import { Classes } from './Classes';
 import { UIPager } from './UIPager';
 

@@ -1,8 +1,8 @@
 import * as React from 'react';
-import { UIAccessibilityElement } from '../UIAccessibilityElement';
+import { UIAccessibilityElement } from './UIAccessibilityElement';
 import { UIView } from './UIView';
-import { UIWindow } from '../UIWindow';
-import { UIAccessibilityCustomAction } from '../UIAccessibilityCustomAction';
+import { UIWindow } from './UIWindow';
+import { UIAccessibilityCustomAction } from './UIAccessibilityCustomAction';
 import { Classes } from './Classes';
 
 export interface UIIconProps {

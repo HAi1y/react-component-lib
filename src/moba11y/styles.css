@@ -53,6 +53,36 @@ footer {
 	min-height: var(--hamburger-height);
 }
 
+footer {
+	display: flex;
+}
+
+div.moba11y-logo {
+	height: 100%;
+	width: 100%;
+	margin: auto;
+	display: flex;
+	font-size: 1.5em;
+	color: var(--color-on-primary);
+	vertical-align: middle;
+}
+
+div.moba11y-logo a {
+	color: var(--color-on-primary);
+}
+
+footer .moba11y-logo img {
+	height: 34px;
+	width: 34px;
+	border-radius: 50%;
+	margin: auto .5em;
+	display: block;
+}
+
+footer span {
+	margin: auto 0;
+}
+
 .viewport {
 	display: flex;
 	flex-direction: column;
@@ -434,13 +464,18 @@ div.simulator div.accessibility-element {
 	margin-bottom: .2em;
 }
 
-div.accessibility-element li {
+div.accessibility-element li,
+div.accessibility-element li a {
 	display: flex;
-	margin: 1em;
 	align-items: center;
+	color: black;
 }
 
-div.accessibility-element li span strong {
+div.accessibility-element li {
+	margin: 1em auto;
+}
+
+div.accessibility-element li a span strong {
 	min-width: 5em;
 	display: inline-block;
 }
@@ -535,6 +570,7 @@ div.simulator h2,
 div.inspector h2 {
 	font-size: 1.2em;
 	margin: .5em auto;
+	margin-bottom: 0;
 }
 
 
@@ -609,6 +645,10 @@ div.simulator div.voiceover-controls {
 	margin: 4px;
 	width: fit-content;
 	height: fit-content;
+}
+
+.accessibility-element span {
+	padding-left: .2em;
 }
 
 .ios.grid-layout {

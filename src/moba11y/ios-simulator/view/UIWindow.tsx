@@ -1,4 +1,4 @@
-import { Rotor } from "./IOSSimulator";
+import { Rotor } from "../IOSSimulator";
 import { UIAccessibilityCustomAction, UIAccessibilityCustomActions } from "./UIAccessibilityCustomAction";
 import { UIAccessibilityElement } from "./UIAccessibilityElement";
 import { UIAccessibilityTrait, UIAccessibilityTraits } from "./UIAccessibilityTrait";

@@ -1,9 +1,9 @@
 import * as React from 'react';
 import { UIView } from './UIView';
-import { UIAccessibilityElement } from '../UIAccessibilityElement';
-import { UIAccessibilityTrait } from '../UIAccessibilityTrait';
+import { UIAccessibilityElement } from './UIAccessibilityElement';
+import { UIAccessibilityTrait } from './UIAccessibilityTrait';
 import { Classes } from './Classes';
-import { UIWindow } from '../UIWindow';
+import { UIWindow } from './UIWindow';
 
 export interface UIPagerProps {
 	initial: number
