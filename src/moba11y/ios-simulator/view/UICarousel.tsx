@@ -10,47 +10,20 @@ export interface UICarouselProps {
 	label?: string
 }
 
-export function UICarousel({ label, views, a11yElement, classes = new Classes }: React.PropsWithChildren<UICarouselProps>) {
+export function UICarousel({ label, views, classes = new Classes }: React.PropsWithChildren<UICarouselProps>) {
 
 	const initial = 1
 	const max = views.length
-	var [current, setIndex] = React.useState(0);
+	var [index, setIndex] = React.useState(initial);
 
 	classes.addClass("carousel")
 
-	function updateValue(value: string) {
-		if (a11yElement) {
-			a11yElement.value = value
-		}
-	}
 
-	var increment = () => {
-
-		if (current >= max) {
-			current = 1;
-			setIndex(current)
-		} else {
-			setIndex(++current)
-		}
-
-		updateValue(current + " of " + max)
-	}
-
-	var decrement = () => {
-
-		if (current - 1 <= 0) {
-			current = max;
-			setIndex(current)
-		} else {
-			setIndex(--current)
-		}
-
-		updateValue(current + " of " + max)
-	}
+	console.log("Pager Index: " + index)
 
 	return (<>
-		{views[current]}
-		<UIPager label={label} initial={initial} max={max} onIncrement={increment} onDecrement={decrement} />
+		{views[index - 1]}
+		<UIPager label={label} initial={initial} max={max} onChange={(current) => { index = current; setIndex(index); }} />
 	</>
 	)
 }

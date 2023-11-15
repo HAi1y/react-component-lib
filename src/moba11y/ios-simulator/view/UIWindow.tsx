@@ -120,10 +120,6 @@ export class UIWindow {
 
 	static add(a11yElement: UIAccessibilityElement): UIAccessibilityElement {
 
-		console.log("Add: " + a11yElement.label)
-
-		console.log("Next: " + a11yElement.nextElement?.label)
-
 		if (a11yElement.nextElement || a11yElement.previousElement) {
 			var nextElement = a11yElement.nextElement
 			var previousElement = a11yElement.previousElement
@@ -164,8 +160,6 @@ export class UIWindow {
 	}
 
 	static remove(element: UIAccessibilityElement) {
-
-		console.log("Remove: " + element.label)
 
 		if (this.firstElement === element) this.firstElement = this.firstElement.nextElement
 		if (this.lastElement === element) this.lastElement = this.lastElement.previousElement

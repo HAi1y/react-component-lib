@@ -66,15 +66,14 @@ export class Rotor extends Array<RotorSettings> {
 
 		if (element === undefined) return undefined
 
-		if (element.traits.includes(UIAccessibilityTrait.adjustable)) {
-			if (up && element.increment) {
-				element.increment()
-				return "" + element.value
-			} else if (!up && element.decrement) {
-				element.decrement()
-				return "" + element.value
-			}
+		if (up && element.increment) {
+			element.increment()
+			return "" + element.value
+		} else if (!up && element.decrement) {
+			element.decrement()
+			return "" + element.value
 		}
+
 
 		return "Adjustable control not properly supported... oops. This is a content bug. Sorry."
 	}
@@ -248,7 +247,7 @@ export function IOSSimulator({ children, instructions }: React.PropsWithChildren
 				{UIWindow.hiddenControls.swipeLeft ? <div style={style} /> : <CTAButton onClick={swipeLeft}><LeftArrow /></CTAButton>}
 				{UIWindow.hiddenControls.twist ? <div style={style} /> : <CTAButton onClick={twist}><RotatingArrows /></CTAButton>}
 				{UIWindow.hiddenControls.swipeRight ? <div style={style} /> : <CTAButton onClick={swipeRight}><RightArrow /></CTAButton>}
-				{UIWindow.hiddenControls.debug ? <div style={style} /> : <CTAButton onClick={debug}>Debug</CTAButton>}
+				{<CTAButton onClick={debug}>Debug</CTAButton>}
 				{UIWindow.hiddenControls.swipeDown ? <div style={style} /> : <CTAButton onClick={swipeDown}><DownArrow /></CTAButton>}
 				{UIWindow.hiddenControls.activate ? <div style={style} /> : <CTAButton onClick={activate}>Activate</CTAButton>}
 			</div>
