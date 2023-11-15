@@ -7,12 +7,14 @@ export interface IconProps {
 	height: string
 	width: string
 	classes: Classes
+	annoying?: boolean
 }
+
 export default class Icons {
 
-	static Tutorial = ({ text, href, height, width, classes }: IconProps) => {
+	static Tutorial = ({ text, href, height, width, classes, annoying }: IconProps) => {
 
-		return (<UIIcon label={text} classes={classes} href={href}>
+		return (<UIIcon label={text} classes={classes} href={href} annoying={annoying}>
 			<svg fill="#000000" height={height} width={width} version="1.1" id="Layer_1" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512">
 				<g>
 					<g>

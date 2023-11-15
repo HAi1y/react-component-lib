@@ -420,6 +420,10 @@ section.instructions ul {
 	line-height: normal;
 }
 
+section.instructions ul {
+	list-style: inside;
+}
+
 div.screen {
 	min-height: 800px;
 }
@@ -655,17 +659,17 @@ div.simulator div.voiceover-controls {
 
 .ios.grid-layout {
 	display: grid;
-	grid-template-columns: 1fr 1fr 1fr 1fr;
+	grid-template-columns: auto auto auto auto;
 	margin: .1em auto;
 }
 
 .ios.launcher-icon {
+	width: 5.4em;
 	display: flex;
 	flex-direction: column;
 }
 
 .ios.launcher-icon div {
-	width: 4em;
 	overflow-wrap: break-word;
 	display: inline-block;
 	text-align: center;

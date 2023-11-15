@@ -41,6 +41,7 @@ export function UIPager({ label, initial, max, onChange, a11yElement, classes = 
 			} else {
 				setIndex(++current)
 				if (onChange) onChange(current)
+				a11yElement?.requestAccessibilityFocus()
 			}
 
 			updateValue(current + " of " + max)
@@ -54,6 +55,7 @@ export function UIPager({ label, initial, max, onChange, a11yElement, classes = 
 			} else {
 				setIndex(--current)
 				if (onChange) onChange(current)
+				a11yElement?.requestAccessibilityFocus()
 			}
 
 			updateValue(current + " of " + max)

@@ -1,7 +1,6 @@
 import React = require("react");
-import { IOSSimulator, UITextView, UITitle, UIButtonNav, UIWindow, UITextFieldProps, UIAccessibilityCustomAction, Classes, UIView } from "../../../../dist";
+import { IOSSimulator, UITextView, UITitle, UIButtonNav, UIWindow, UITextFieldProps, UIAccessibilityCustomAction, Classes, UIView, UIInput } from "../../../../dist";
 import { html } from "./FocusInputs.md"
-import { UIAccessibilityElement } from "../../../../dist/moba11y/ios-simulator/UIAccessibilityElement";
 import { RotorSettings, Rotor } from "../../../../dist";
 
 export function UITextField({ label, value, classes = new Classes, a11yElement, errors }: UITextFieldProps) {
@@ -30,7 +29,7 @@ export function UITextField({ label, value, classes = new Classes, a11yElement, 
 		a11yElement.rotor.setTo(RotorSettings.Characters)
 		UIWindow.setRotor(a11yElement.rotor)
 		a11yElement.requestAccessibilityFocus()
-		a11yElement.character = (up: boolean, element: UIAccessibilityElement) => {
+		a11yElement.character = (up: boolean) => {
 
 			var value = currentTarget.value
 
@@ -55,8 +54,11 @@ export function UITextField({ label, value, classes = new Classes, a11yElement, 
 	var errorElements: Array<React.ReactNode> = []
 
 	errors?.forEach(error => {
+		var hiddenElement = UIWindow.newElement()
+		hiddenElement.hidden = true;
+
 		errorElements.push(<div style={{ margin: "0 2em" }} >
-			<UITextView text={"Error: " + error} a11yElement={null} />
+			<UITextView text={"Error: " + error} a11yElement={hiddenElement} />
 		</div>)
 	})
 
@@ -64,11 +66,7 @@ export function UITextField({ label, value, classes = new Classes, a11yElement, 
 		<div className="ios text-field">
 			<label htmlFor={label}>{label}</label>
 			<UIView classes={classes} a11yElement={a11yElement}>
-				<input type="text" defaultValue={value} id={label} name={label}
-					onSelect={(event) => logSelection(event)}
-					onFocus={() => {
-						UIWindow.announce("Insertion point at end.")
-					}} />
+				<UIInput label={label} a11yElement={a11yElement} />
 			</UIView>
 		</div>
 		{errorElements}
@@ -84,8 +82,8 @@ export default function FocusInputs({ }) {
 		<UITextField label="Password" value="IceCream" errors={["That is a terrible password.", "Not long enough."]} />
 		<UITextField label="Birthday" value="yesterday" errors={["Expected format: MM/DD/YY"]} />
 		<div style={{ margin: "1em auto" }} >
-			<UIButtonNav text="Back" href="/app/text-fields/focus-everything" />
-			<UIButtonNav text="Next" href="/app/text-fields/focus-inputs" />
+			<UIButtonNav text="Back" href="/app/text-fields/focus-everything-weaknesses" />
+			<UIButtonNav text="Next" href="/app/text-fields/group-information" />
 		</div>
 	</IOSSimulator>)
 }

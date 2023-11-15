@@ -66,14 +66,14 @@ export class UIWindow {
 		if (reverse) {
 			var e = this.lastElement
 
-			while (e && i++ < 10) {
+			while (e && i++ < 1000) {
 				result += e.label + " - "
 				e = e.previousElement
 			}
 		} else {
 			var e = this.firstElement
 
-			while (e && i++ < 10) {
+			while (e && i++ < 1000) {
 				result += e.label + " - "
 				e = e.nextElement
 			}
@@ -100,7 +100,16 @@ export class UIWindow {
 	static focusPrevious() {
 
 		if (UIWindow.element === undefined) return this.defaultElement()
-		if (UIWindow.element.previousElement) this.focus(UIWindow.element.previousElement)
+
+		if (UIWindow.element.previousElement) {
+			this.focus(UIWindow.element.previousElement)
+		} else if (this.lastElement) {
+			if (this.lastElement.previousElement) {
+				this.focus(this.lastElement.previousElement)
+			} else {
+				this.focus(this.lastElement)
+			}
+		}
 
 		return UIWindow.element
 	}
@@ -120,49 +129,35 @@ export class UIWindow {
 
 	static add(a11yElement: UIAccessibilityElement): UIAccessibilityElement {
 
-		if (a11yElement.nextElement || a11yElement.previousElement) {
-			var nextElement = a11yElement.nextElement
-			var previousElement = a11yElement.previousElement
-
-			if (previousElement) {
-				previousElement.nextElement = a11yElement
-			}
-
-			if (nextElement) {
-				nextElement.previousElement = a11yElement
-			}
-
-			return a11yElement
-		}
+		console.log("Adding: " + a11yElement.label + " To: " + this.insertionPoint?.label)
 
 		if (this.firstElement === undefined) {
 			this.firstElement = a11yElement
 			this.insertionPoint = a11yElement
-		} else {
-			if (this.insertionPoint) {
-				if (this.insertionPoint.nextElement) this.insertionPoint.nextElement.previous(a11yElement)
-				this.insertionPoint.next(a11yElement)
-			} else {
-				this.firstElement.previous(a11yElement)
-				this.firstElement = a11yElement
-			}
-
-			a11yElement.previous(this.insertionPoint)
-
-			this.insertionPoint = a11yElement
-
-			if (!this.insertionPoint.nextElement) {
-				this.lastElement = this.insertionPoint
-			}
+			this.lastElement = a11yElement
+			return a11yElement
 		}
+
+		var nextElement = a11yElement.nextElement
+		var previousElement = a11yElement.previousElement
+
+		if (nextElement || previousElement) {
+			nextElement?.previous(a11yElement)
+			previousElement?.next(a11yElement)
+		} else {
+			a11yElement.previous(this.lastElement)
+			this.lastElement?.next(a11yElement)
+			this.lastElement = a11yElement
+		}
+
+		this.log()
 
 		return a11yElement
 	}
 
 	static remove(element: UIAccessibilityElement) {
 
-		if (this.firstElement === element) this.firstElement = this.firstElement.nextElement
-		if (this.lastElement === element) this.lastElement = this.lastElement.previousElement
+		console.log("Removing: " + element.label)
 
 		if (element.nextElement) {
 			element.nextElement.previous(element.previousElement)
@@ -173,5 +168,7 @@ export class UIWindow {
 		}
 
 		this.insertionPoint = element.previousElement
+
+		this.log()
 	}
 }

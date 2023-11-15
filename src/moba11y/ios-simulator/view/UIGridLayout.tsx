@@ -7,7 +7,7 @@ export interface UIGridLayoutProps {
 
 export function UIGridLayout({ classes = new Classes, children }: React.PropsWithChildren<UIGridLayoutProps>) {
 
-	classes.push("grid-layout")
+	classes.push("ios grid-layout")
 
 	return (
 		<div className={classes.toClassName()}>

@@ -4,6 +4,7 @@ import { UIView } from './UIView';
 import { UIWindow } from './UIWindow';
 import { UIAccessibilityCustomAction } from './UIAccessibilityCustomAction';
 import { Classes } from './Classes';
+import { UITextView } from './UITextView';
 
 export interface UIIconProps {
 	label: string
@@ -11,9 +12,10 @@ export interface UIIconProps {
 	href?: string
 	a11yElement?: UIAccessibilityElement
 	onClick?: () => any
+	annoying?: boolean
 }
 
-export function UIIcon({ label, onClick, classes = new Classes, href, a11yElement, children }: React.PropsWithChildren<UIIconProps>) {
+export function UIIcon({ label, onClick, classes = new Classes, href, a11yElement, children, annoying }: React.PropsWithChildren<UIIconProps>) {
 
 	if (!a11yElement) {
 		a11yElement = UIWindow.newElement()
@@ -32,10 +34,19 @@ export function UIIcon({ label, onClick, classes = new Classes, href, a11yElemen
 		}
 	))
 
-	return (
-		<UIView classes={classes} a11yElement={a11yElement}>
-			{children}
-			<div>{label}</div>
-		</UIView>
-	)
+	if (annoying) {
+		return (<>
+			<UIView classes={classes} a11yElement={a11yElement}>
+				{children}
+			</UIView>
+			<UITextView text={label} />
+		</>)
+	} else {
+		return (
+			<UIView classes={classes} a11yElement={a11yElement}>
+				{children}
+				<div>{label}</div>
+			</UIView>
+		)
+	}
 }

@@ -40,8 +40,8 @@ export { UICarousel }
 import { UIButton, UIButtonNav } from "./moba11y/ios-simulator/view/UIButton";
 export { UIButton, UIButtonNav }
 
-import { UITextFieldProps, UITextField, UITextField2 } from "./moba11y/ios-simulator/view/UITextField";
-export { UITextFieldProps, UITextField, UITextField2 }
+import { UITextFieldProps, UITextField, UIInput } from "./moba11y/ios-simulator/view/UITextField";
+export { UITextFieldProps, UITextField, UIInput }
 
 import { UIAccessibilityCustomAction } from "./moba11y/ios-simulator/view/UIAccessibilityCustomAction";
 export { UIAccessibilityCustomAction }

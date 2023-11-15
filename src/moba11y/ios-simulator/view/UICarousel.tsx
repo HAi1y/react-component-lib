@@ -18,9 +18,6 @@ export function UICarousel({ label, views, classes = new Classes }: React.PropsW
 
 	classes.addClass("carousel")
 
-
-	console.log("Pager Index: " + index)
-
 	return (<>
 		{views[index - 1]}
 		<UIPager label={label} initial={initial} max={max} onChange={(current) => { index = current; setIndex(index); }} />

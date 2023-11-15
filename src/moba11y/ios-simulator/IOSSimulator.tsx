@@ -74,7 +74,6 @@ export class Rotor extends Array<RotorSettings> {
 			return "" + element.value
 		}
 
-
 		return "Adjustable control not properly supported... oops. This is a content bug. Sorry."
 	}
 

@@ -1,12 +1,20 @@
-## Solution: Focus Everything
+---
+title: Solution 1 - Focus Everything
+---
 
-One solution is to behave like the Arrow Key on a keyboard. This means that all elements are individually focusable. This results in the following behavior:
+One solution is to behave like the Arrow Key on a keyboard. This means that all elements are individually focusable. 
 
-1. **Swipe Right:** "Username"
-2. **Swipe Right:** "Username, GnarlyDawg84"
+```
+	textField.accessibilityLabel = label.text
+```
 
-Notice that you hear the word UserName twice. A small problem on a short form, but can be annoying to some in longer experiences.
+Notice that you hear the word UserName twice. 
 
-This is the simplest solution, though it doesn't account for associating error messages and other information. Informational relationships are only identifiable via Focus Order and locality.
+### Pros
+- Very simple to implement.
+- Resolves WCAG issues.
+- Everything responds to Touch to Explore gestures.
 
-Activate Next!
+### Cons
+- Linear Navigation experience gets worse for every Input Field.
+- Touch to Expolore experience relies on locality to create informational relationships.

@@ -1,9 +1,9 @@
 import * as React from 'react';
-import { UIAccessibilityElement } from './UIAccessibilityElement';
 import { UIView } from './UIView';
+import { Classes } from './Classes';
+import { UIAccessibilityElement } from './UIAccessibilityElement';
 import { UIWindow } from './UIWindow';
 import { UIAccessibilityTrait } from './UIAccessibilityTrait';
-import { Classes } from './Classes';
 
 
 export enum FontStyle {

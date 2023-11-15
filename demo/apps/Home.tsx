@@ -26,14 +26,14 @@ export const Home = () => {
 				classes={new Classes(["launcher-icon"])}
 			/>
 			< Icons.TextFields
-				text="Text Fields"
+				text="Input Labels"
 				href="/app/text-fields/intro"
 				width="64px"
 				height="64px"
 				classes={new Classes(["launcher-icon"])}
 			/>
-			<div style={style} />
-			<div style={style} />
+			<div className="ios launcher-icon" />
+			<div className="ios launcher-icon" />
 		</UIGridLayout>
 	</IOSSimulator>)
 }

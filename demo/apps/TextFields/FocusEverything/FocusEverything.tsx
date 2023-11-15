@@ -1,6 +1,8 @@
 import React = require("react");
-import { IOSSimulator, UITextView, UITitle, UIButtonNav, UIWindow, UITextFieldProps, UIAccessibilityCustomAction, Classes, UIView, UIPager, UICarousel } from "../../../../dist";
-import { html } from "./FocusEverything.md"
+import { IOSSimulator, UITextView, UITitle, UIButtonNav, UIWindow, UITextFieldProps, UIAccessibilityCustomAction, Classes, UIView, UIPager, UICarousel, UIGridLayout } from "../../../../dist";
+import { meta, html } from "./FocusEverything.md"
+import Icons from "../../../components/Icons";
+import MarkdownContainer from "../../../components/MardownContainer";
 
 export function UITextField({ classes = new Classes, label, value, errors }: UITextFieldProps) {
 
@@ -40,26 +42,18 @@ export function UITextField({ classes = new Classes, label, value, errors }: UIT
 
 export default function FocusEverything() {
 
-	return (<IOSSimulator instructions={<div dangerouslySetInnerHTML={{ __html: html }} />}>
-		<UICarousel views={[<>
-			<UITitle text="Focus Everything" />
-			<UITextField label="Username" value="GnarlyDawg84" />
-			<UITextField label="Password" value="IceCream" errors={["That is a terrible password.", "Not long enough."]} />
-			<UITextField label="Birthday" value="yesterday" errors={["Expected format: MM/DD/YY"]} />
-			<div style={{ margin: "1em auto" }} >
-				<UIButtonNav text="Back" href="/app/text-fields/intro" />
-				<UIButtonNav text="Next" href="/app/text-fields/focus-inputs" />
-			</div>
-		</>,
-		<>
-			<UITitle text="Focus Everything" />
-			<UITextField label="Username" value="GnarlyDawg84" />
-			<UITextField label="Password" value="IceCream" errors={["That is a terrible password.", "Not long enough."]} />
-			<UITextField label="Birthday" value="yesterday" errors={["Expected format: MM/DD/YY"]} />
-			<div style={{ margin: "1em auto" }} >
-				<UIButtonNav text="Back" href="/app/text-fields/intro" />
-				<UIButtonNav text="Next" href="/app/text-fields/focus-inputs" />
-			</div>
-		</>]} />
+	var style = {
+		width: "72px",
+		height: "72px"
+	}
+
+	return (<IOSSimulator instructions={<MarkdownContainer title={meta.title} html={html} />}>
+		<UITitle text="Focus Everything" />
+		<UITextField label="Username" value="GnarlyDawg84" />
+		<UITextField label="Password" value="IceCream" errors={["That is a terrible password.", "Not long enough."]} />
+		<UITextField label="Birthday" value="yesterday" errors={["Expected format: MM/DD/YY"]} />
+		<div style={{ margin: "1em auto" }} >
+			<UIButtonNav text="Next" href="/app/text-fields/focus-everything-weaknesses" />
+		</div>
 	</IOSSimulator>)
 }
