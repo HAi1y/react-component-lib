@@ -50,6 +50,7 @@ export class UIAccessibilityElement {
 	}
 
 	constructor(
+		hidden: boolean = false,
 		label?: string,
 		value?: string,
 		hint?: string,
@@ -61,6 +62,7 @@ export class UIAccessibilityElement {
 		this.label = label
 		this.value = value
 		this.hint = hint
+		this.hidden = hidden
 		traits?.forEach(trait => this.traits.push(trait))
 		actions?.forEach(action => this.actions.push(action))
 		rotor?.forEach(setting => this.rotor.push(setting))

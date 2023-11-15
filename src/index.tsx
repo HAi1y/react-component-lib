@@ -19,8 +19,8 @@ export { IOSSimulator }
 import { UITextView, UITitle, FontStyle } from "./moba11y/ios-simulator/view/UITextView";
 export { UITextView, UITitle, FontStyle }
 
-import { UIIcon } from "./moba11y/ios-simulator/view/UIIcon";
-export { UIIcon }
+import { UIIcon, UIIconStyle, UIIconProps } from "./moba11y/ios-simulator/view/UIIcon";
+export { UIIcon, UIIconStyle, UIIconProps }
 
 import { UIGridLayout } from "./moba11y/ios-simulator/view/UIGridLayout";
 export { UIGridLayout }
@@ -40,8 +40,8 @@ export { UICarousel }
 import { UIButton, UIButtonNav } from "./moba11y/ios-simulator/view/UIButton";
 export { UIButton, UIButtonNav }
 
-import { UITextFieldProps, UITextField, UIInput } from "./moba11y/ios-simulator/view/UITextField";
-export { UITextFieldProps, UITextField, UIInput }
+import { UITextFieldProps, UITextField } from "./moba11y/ios-simulator/view/UITextField";
+export { UITextFieldProps, UITextField }
 
 import { UIAccessibilityCustomAction } from "./moba11y/ios-simulator/view/UIAccessibilityCustomAction";
 export { UIAccessibilityCustomAction }
@@ -54,3 +54,6 @@ export { RotorSettings, Rotor }
 
 import { MobA11yLogo } from "./moba11y/components/Logo";
 export { MobA11yLogo }
+
+import { UIInput } from "./moba11y/ios-simulator/view/UIInput";
+export { UIInput }

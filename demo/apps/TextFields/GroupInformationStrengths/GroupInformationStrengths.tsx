@@ -2,9 +2,9 @@ import React = require("react")
 import { IOSSimulator, UITitle, UIGridLayout, Classes, UIButtonNav, UIIconStyle } from "../../../../dist"
 import Icons from "../../../components/Icons"
 import MarkdownContainer from "../../../components/MardownContainer"
-import { html, meta } from "./FocusEverythingWeaknesses.md"
+import { html, meta } from "./GroupInformationStrengths.md"
 
-export function FocusEverythingWeaknesses() {
+export function GroupInformationStrengths() {
 
 	var style = {
 		width: "72px",
@@ -20,7 +20,7 @@ export function FocusEverythingWeaknesses() {
 					width={style.width}
 					height={style.height}
 					classes={new Classes([])}
-					iconStyle={UIIconStyle.annoying}
+					iconStyle={UIIconStyle.grouped}
 				/>
 			</div>
 			<div className="ios launcher-icon">
@@ -29,16 +29,7 @@ export function FocusEverythingWeaknesses() {
 					width={style.width}
 					height={style.height}
 					classes={new Classes([])}
-					iconStyle={UIIconStyle.annoying}
-				/>
-			</div>
-			<div className="ios launcher-icon">
-				< Icons.Tutorial
-					text="not"
-					width={style.width}
-					height={style.height}
-					classes={new Classes([])}
-					iconStyle={UIIconStyle.annoying}
+					iconStyle={UIIconStyle.grouped}
 				/>
 			</div>
 			<div className="ios launcher-icon">
@@ -47,48 +38,48 @@ export function FocusEverythingWeaknesses() {
 					width={style.width}
 					height={style.height}
 					classes={new Classes([])}
-					iconStyle={UIIconStyle.annoying}
+					iconStyle={UIIconStyle.grouped}
 				/>
 			</div>
 			<div className="ios launcher-icon">
 				< Icons.Tutorial
-					text="the"
+					text="we"
 					width={style.width}
 					height={style.height}
 					classes={new Classes([])}
-					iconStyle={UIIconStyle.annoying}
+					iconStyle={UIIconStyle.grouped}
 				/>
 			</div>
 			<div className="ios launcher-icon">
 				< Icons.Tutorial
-					text="iOS"
+					text="build"
 					width={style.width}
 					height={style.height}
 					classes={new Classes([])}
-					iconStyle={UIIconStyle.annoying}
+					iconStyle={UIIconStyle.grouped}
 				/>
 			</div>
 			<div className="ios launcher-icon">
 				< Icons.Tutorial
-					text="launcher"
+					text="our"
 					width={style.width}
 					height={style.height}
 					classes={new Classes([])}
-					iconStyle={UIIconStyle.annoying}
+					iconStyle={UIIconStyle.grouped}
 				/>
 			</div>
 			<div className="ios launcher-icon">
 				< Icons.Tutorial
-					text="behaves"
+					text="controls"
 					width={style.width}
 					height={style.height}
 					classes={new Classes([])}
-					iconStyle={UIIconStyle.annoying}
+					iconStyle={UIIconStyle.grouped}
 				/>
 			</div>
 		</UIGridLayout>
 		<div style={{ margin: "1em auto" }} >
-			<UIButtonNav text="Next" href="/app/text-fields/focus-inputs" />
+			<UIButtonNav text="Done" href="/" />
 		</div>
 	</IOSSimulator>)
 }

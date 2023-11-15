@@ -16,9 +16,10 @@ export interface UITextViewProps {
 	fontStyle?: FontStyle
 	classes?: Classes
 	a11yElement?: UIAccessibilityElement
+	style?: React.CSSProperties
 }
 
-export function UITextView({ text, fontStyle = FontStyle.body, classes = new Classes, a11yElement }: UITextViewProps) {
+export function UITextView({ text, fontStyle = FontStyle.body, classes = new Classes, a11yElement, style }: UITextViewProps) {
 
 	if (a11yElement === undefined) {
 		a11yElement = UIWindow.newElement()
@@ -29,13 +30,13 @@ export function UITextView({ text, fontStyle = FontStyle.body, classes = new Cla
 	classes.push(fontStyle)
 
 	return (
-		<UIView a11yElement={a11yElement} classes={classes}>
+		<UIView a11yElement={a11yElement} classes={classes} style={style}>
 			{text}
 		</UIView>
 	)
 }
 
-export function UITitle({ text, fontStyle = FontStyle.title, classes = new Classes, a11yElement }: UITextViewProps) {
+export function UITitle({ text, fontStyle = FontStyle.title, classes = new Classes, a11yElement, style }: UITextViewProps) {
 
 	if (!a11yElement) {
 		a11yElement = UIWindow.newElement()
@@ -48,7 +49,7 @@ export function UITitle({ text, fontStyle = FontStyle.title, classes = new Class
 
 	return (
 		<div>
-			<UIView a11yElement={a11yElement} classes={classes}>
+			<UIView a11yElement={a11yElement} classes={classes} style={style}>
 				<h2>{text}</h2>
 			</UIView>
 		</div>

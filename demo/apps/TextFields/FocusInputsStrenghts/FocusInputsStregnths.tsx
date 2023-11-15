@@ -2,9 +2,9 @@ import React = require("react")
 import { IOSSimulator, UITitle, UIGridLayout, Classes, UIButtonNav, UIIconStyle } from "../../../../dist"
 import Icons from "../../../components/Icons"
 import MarkdownContainer from "../../../components/MardownContainer"
-import { html, meta } from "./FocusEverythingWeaknesses.md"
+import { html, meta } from "./FocusInputsStrengths.md"
 
-export function FocusEverythingWeaknesses() {
+export function FocusInputsStrengths() {
 
 	var style = {
 		width: "72px",
@@ -20,7 +20,7 @@ export function FocusEverythingWeaknesses() {
 					width={style.width}
 					height={style.height}
 					classes={new Classes([])}
-					iconStyle={UIIconStyle.annoying}
+					iconStyle={UIIconStyle.input}
 				/>
 			</div>
 			<div className="ios launcher-icon">
@@ -29,16 +29,7 @@ export function FocusEverythingWeaknesses() {
 					width={style.width}
 					height={style.height}
 					classes={new Classes([])}
-					iconStyle={UIIconStyle.annoying}
-				/>
-			</div>
-			<div className="ios launcher-icon">
-				< Icons.Tutorial
-					text="not"
-					width={style.width}
-					height={style.height}
-					classes={new Classes([])}
-					iconStyle={UIIconStyle.annoying}
+					iconStyle={UIIconStyle.input}
 				/>
 			</div>
 			<div className="ios launcher-icon">
@@ -47,7 +38,7 @@ export function FocusEverythingWeaknesses() {
 					width={style.width}
 					height={style.height}
 					classes={new Classes([])}
-					iconStyle={UIIconStyle.annoying}
+					iconStyle={UIIconStyle.input}
 				/>
 			</div>
 			<div className="ios launcher-icon">
@@ -56,7 +47,7 @@ export function FocusEverythingWeaknesses() {
 					width={style.width}
 					height={style.height}
 					classes={new Classes([])}
-					iconStyle={UIIconStyle.annoying}
+					iconStyle={UIIconStyle.input}
 				/>
 			</div>
 			<div className="ios launcher-icon">
@@ -65,7 +56,7 @@ export function FocusEverythingWeaknesses() {
 					width={style.width}
 					height={style.height}
 					classes={new Classes([])}
-					iconStyle={UIIconStyle.annoying}
+					iconStyle={UIIconStyle.input}
 				/>
 			</div>
 			<div className="ios launcher-icon">
@@ -74,7 +65,7 @@ export function FocusEverythingWeaknesses() {
 					width={style.width}
 					height={style.height}
 					classes={new Classes([])}
-					iconStyle={UIIconStyle.annoying}
+					iconStyle={UIIconStyle.input}
 				/>
 			</div>
 			<div className="ios launcher-icon">
@@ -83,12 +74,12 @@ export function FocusEverythingWeaknesses() {
 					width={style.width}
 					height={style.height}
 					classes={new Classes([])}
-					iconStyle={UIIconStyle.annoying}
+					iconStyle={UIIconStyle.input}
 				/>
 			</div>
 		</UIGridLayout>
 		<div style={{ margin: "1em auto" }} >
-			<UIButtonNav text="Next" href="/app/text-fields/focus-inputs" />
+			<UIButtonNav text="Next" href="/app/text-fields/group-information" />
 		</div>
 	</IOSSimulator>)
 }

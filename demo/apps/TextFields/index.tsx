@@ -6,6 +6,8 @@ import FocusInputs from "./FocusInputs/FocusInputs";
 import { useParams } from "react-router-dom";
 import GroupInformation from "./GroupInformation/GroupInformation";
 import { FocusEverythingWeaknesses } from "./FocusEverythingWeaknesses/FocusEverythingWeaknesses";
+import { FocusInputsStrengths } from "./FocusInputsStrenghts/FocusInputsStregnths";
+import { GroupInformationStrengths } from "./GroupInformationStrengths/GroupInformationStrengths";
 
 export default function TextFields() {
 
@@ -16,7 +18,9 @@ export default function TextFields() {
 		"focus-everything": <FocusEverything />,
 		"focus-inputs": <FocusInputs />,
 		"focus-everything-weaknesses": <FocusEverythingWeaknesses />,
-		"group-information": <GroupInformation />
+		"focus-inputs-strengths": <FocusInputsStrengths />,
+		"group-information": <GroupInformation />,
+		"group-information-strengths": <GroupInformationStrengths />
 	}
 
 

@@ -10,5 +10,3 @@ Ways you can bring this tool to your teams:
 3. Bring informed dicussion to your teams across all disciplines.
 
 It has also come in very handy in MobA11y's Goal of building completely automated Quality Assurance and User Experience testing processes that include consideration for users with disabilities.
-
-Enjoy and feel free to provide feedback on LinkedIn!

@@ -1,20 +1,20 @@
 import React = require("react");
-import { Classes, UIIcon } from "../../dist";
+import { Classes, UIIcon, UIIconStyle } from "../../dist";
 
 export interface IconProps {
 	text: string
-	href: string
+	href?: string
 	height: string
 	width: string
 	classes: Classes
-	annoying?: boolean
+	iconStyle?: UIIconStyle
 }
 
 export default class Icons {
 
-	static Tutorial = ({ text, href, height, width, classes, annoying }: IconProps) => {
+	static Tutorial = ({ text, href, height, width, classes, iconStyle }: IconProps) => {
 
-		return (<UIIcon label={text} classes={classes} href={href} annoying={annoying}>
+		return (<UIIcon label={text} classes={classes} href={href} iconStyle={iconStyle}>
 			<svg fill="#000000" height={height} width={width} version="1.1" id="Layer_1" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512">
 				<g>
 					<g>
