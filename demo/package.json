@@ -9,6 +9,7 @@
   },
   "dependencies": {
     "parcel-bundler": "^1.12.5",
+    "postcss": "^8.4.31",
     "react-app-polyfill": "^1.0.0",
     "react-markdown": "8.0.7",
     "react-router-dom": "^6.16.0"

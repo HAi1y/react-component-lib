@@ -45,7 +45,7 @@ export class UIWindow {
 	}
 
 	static defaultElement() {
-		return new UIAccessibilityElement(
+		return new UIAccessibilityElement(false,
 			"{AccessibilityLabel}",
 			"{AccessibilityValue}",
 			"{AccessibilityHint}",
