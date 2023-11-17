@@ -243,7 +243,7 @@ export function IOSSimulator({ children, instructions }: React.PropsWithChildren
 				{UIWindow.hiddenControls.swipeLeft ? <div style={style} /> : <CTAButton onClick={swipeLeft}><LeftArrow /></CTAButton>}
 				{UIWindow.hiddenControls.twist ? <div style={style} /> : <CTAButton onClick={twist}><RotatingArrows /></CTAButton>}
 				{UIWindow.hiddenControls.swipeRight ? <div style={style} /> : <CTAButton onClick={swipeRight}><RightArrow /></CTAButton>}
-				{<CTAButton onClick={debug}>Debug</CTAButton>}
+				{UIWindow.hiddenControls.debug ? <div style={style} /> : <CTAButton onClick={debug}>Debug</CTAButton>}
 				{UIWindow.hiddenControls.swipeDown ? <div style={style} /> : <CTAButton onClick={swipeDown}><DownArrow /></CTAButton>}
 				{UIWindow.hiddenControls.activate ? <div style={style} /> : <CTAButton onClick={activate}>Activate</CTAButton>}
 			</div>

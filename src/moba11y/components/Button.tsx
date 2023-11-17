@@ -48,6 +48,5 @@ export function CTAButton({ children, className, description, onClick }: React.P
 		onClick={onClick}
 		aria-label={description}
 		aria-pressed={false}
-		disabled={typeof onClick === 'undefined'}
 	>{children}</button>)
 }
