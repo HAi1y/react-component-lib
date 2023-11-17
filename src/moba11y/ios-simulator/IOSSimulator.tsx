@@ -125,8 +125,6 @@ export function IOSSimulator({ children, instructions }: React.PropsWithChildren
 	if (UIWindow.element === undefined)
 		firstSwipeTimeout = setTimeout(() => swipeRight(), 2000)
 
-	var speech: SpeechSynthesis
-
 	var updateRotor = (r: Rotor) => {
 		rotor = r
 		setRotor(rotor)
@@ -207,6 +205,8 @@ export function IOSSimulator({ children, instructions }: React.PropsWithChildren
 
 	function VoiceOverAnnouncement({ announcement }: VoiceOverAnnouncementPropts) {
 
+		var speech = UIWindow.speech
+
 		if (speech) {
 
 			var msg = new SpeechSynthesisUtterance();
@@ -274,10 +274,9 @@ export function IOSSimulator({ children, instructions }: React.PropsWithChildren
 	}
 
 	React.useEffect(() => {
-
-		speech = window.speechSynthesis
-
 		window.addEventListener("keydown", onKeyDown)
+
+		UIWindow.speech = window.speechSynthesis
 
 		return () => {
 			window.removeEventListener("keydown", onKeyDown)

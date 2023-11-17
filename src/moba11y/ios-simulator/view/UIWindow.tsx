@@ -18,6 +18,8 @@ export class UIWindow {
 
 	static updateRotor?: (rotor: Rotor) => any
 
+	static speech?: SpeechSynthesis
+
 	static setRotor = (rotor: Rotor) => {
 		if (UIWindow.updateRotor) UIWindow.updateRotor(rotor)
 		UIWindow.rotor = rotor
