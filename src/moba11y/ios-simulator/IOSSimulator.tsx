@@ -1,3 +1,4 @@
+"use client"
 import * as React from 'react';
 import { CTAButton } from '../components/Button';
 import { Speaker, RotatingArrows, UpArrow, LeftArrow, RightArrow, DownArrow } from '../components/Icons';
@@ -125,10 +126,6 @@ export function IOSSimulator({ children, instructions }: React.PropsWithChildren
 		firstSwipeTimeout = setTimeout(() => swipeRight(), 2000)
 
 	var speech: SpeechSynthesis
-
-	if (window !== undefined) {
-		speech = window.speechSynthesis
-	}
 
 	var updateRotor = (r: Rotor) => {
 		rotor = r
@@ -277,6 +274,9 @@ export function IOSSimulator({ children, instructions }: React.PropsWithChildren
 	}
 
 	React.useEffect(() => {
+
+		speech = window.speechSynthesis
+
 		window.addEventListener("keydown", onKeyDown)
 
 		return () => {

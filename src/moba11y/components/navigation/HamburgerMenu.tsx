@@ -1,3 +1,4 @@
+"use client"
 import * as React from 'react';
 import { Navigation, NavigationSection } from './Navigation';
 import { ToggleButton } from '../Button';

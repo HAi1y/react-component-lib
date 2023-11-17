@@ -1,3 +1,4 @@
+"use client"
 import * as React from 'react';
 import { UIView } from './UIView';
 import { UIAccessibilityElement } from './UIAccessibilityElement';
