@@ -1,3 +1,4 @@
+"use client"
 import * as React from "react";
 import { NavigationSection } from "../navigation/Navigation";
 import { HamburgerMenu } from "../navigation";

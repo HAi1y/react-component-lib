@@ -50,7 +50,6 @@
     "@size-limit/preset-small-lib": "^9.0.0",
     "@types/react": "^18.2.24",
     "@types/react-dom": "^18.2.8",
-    "@types/react-helmet": "^6.1.8",
     "husky": "^8.0.3",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
@@ -61,7 +60,6 @@
 		"cssnano":"4.1.11"
   },
   "dependencies": {
-    "postcss": "^8.4.31",
-    "react-helmet": "^6.1.0"
+    "postcss": "^8.4.31"
   }
 }

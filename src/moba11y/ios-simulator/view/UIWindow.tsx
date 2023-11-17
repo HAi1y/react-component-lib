@@ -7,7 +7,6 @@ export class UIWindow {
 
 	private static firstElement?: UIAccessibilityElement
 	private static lastElement?: UIAccessibilityElement
-	private static insertionPoint?: UIAccessibilityElement
 	static element?: UIAccessibilityElement
 
 	static onFocus?: (element: UIAccessibilityElement) => any
@@ -131,11 +130,8 @@ export class UIWindow {
 
 	static add(a11yElement: UIAccessibilityElement): UIAccessibilityElement {
 
-		console.log("Adding: " + a11yElement.label + " To: " + this.insertionPoint?.label)
-
 		if (this.firstElement === undefined) {
 			this.firstElement = a11yElement
-			this.insertionPoint = a11yElement
 			this.lastElement = a11yElement
 			return a11yElement
 		}
@@ -152,14 +148,10 @@ export class UIWindow {
 			this.lastElement = a11yElement
 		}
 
-		this.log()
-
 		return a11yElement
 	}
 
 	static remove(element: UIAccessibilityElement) {
-
-		console.log("Removing: " + element.label)
 
 		if (element.nextElement) {
 			element.nextElement.previous(element.previousElement)
@@ -168,9 +160,5 @@ export class UIWindow {
 		if (element.previousElement) {
 			element.previousElement.next(element.nextElement)
 		}
-
-		this.insertionPoint = element.previousElement
-
-		this.log()
 	}
 }
