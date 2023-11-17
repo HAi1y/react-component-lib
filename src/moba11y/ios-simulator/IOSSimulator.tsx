@@ -120,9 +120,9 @@ export function IOSSimulator({ children, instructions }: React.PropsWithChildren
 	var [rotor, setRotor] = React.useState(new Rotor)
 
 	var timeout: NodeJS.Timeout
-	var firstSwipeTimeout: NodeJS.Timeout
+	var firstSwipeTimeout: NodeJS.Timeout | undefined
 
-	if (UIWindow.element === undefined)
+	if (UIWindow.element === undefined && firstSwipeTimeout)
 		firstSwipeTimeout = setTimeout(() => swipeRight(), 2000)
 
 	var updateRotor = (r: Rotor) => {
