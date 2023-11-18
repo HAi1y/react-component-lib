@@ -350,6 +350,7 @@ button.three-dots-later {
 }
 
 /* ---------- Buttons ----------  */
+a.moba11y-button,
 button.moba11y-button {
 	display: inline-block;
 	padding-left: 1.5rem;
