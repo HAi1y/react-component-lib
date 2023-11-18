@@ -36,9 +36,9 @@ export function UITextField({ label, value, classes = new Classes, a11yElement, 
 	var errorElements: Array<React.ReactNode> = []
 
 
-	errors?.forEach(error => {
+	errors?.forEach((error, index) => {
 		if (a11yElement) a11yElement.value += ", Error: " + error
-		errorElements.push(<div style={{ margin: "0 2em" }} >
+		errorElements.push(<div key={index} style={{ margin: "0 2em" }} >
 			<UITextView text={error} a11yElement={new UIAccessibilityElement(true)} />
 		</div>)
 	})
