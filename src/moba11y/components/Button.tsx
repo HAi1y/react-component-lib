@@ -1,4 +1,5 @@
 import * as React from 'react';
+import { Classes } from '../ios-simulator/view/Classes';
 
 export interface ToggleButtonProps {
 	onClick: (isExpanded: boolean) => any;
@@ -8,28 +9,32 @@ export interface ToggleButtonProps {
 
 export function ToggleButton({ children, className, description, onClick }: React.PropsWithChildren<ToggleButtonProps>) {
 
+	var [pressed, setPressed] = React.useState(false)
+
 	const buttonHandler = (event: React.MouseEvent<HTMLButtonElement>) => {
 		event.preventDefault();
 		event.stopPropagation();
 
-		const button: HTMLButtonElement = event.currentTarget;
-
-		button.classList.toggle('opened');
-
-		var pressed = button.classList.contains('opened');
-
-		button.setAttribute('aria-pressed', "" + pressed);
+		pressed = !pressed
 
 		if (onClick) {
 			onClick(pressed)
 		}
+
+		setPressed(pressed)
 	};
+
+	const classes = new Classes
+
+	if (pressed) classes.push("opened")
+
+	if (className) classes.push(className)
 
 	return (
 		<button className={className}
 			onClick={buttonHandler}
 			aria-label={description}
-			aria-pressed={false}
+			aria-pressed={pressed}
 			disabled={typeof onClick === 'undefined'}
 		>
 			{children}
@@ -47,6 +52,5 @@ export function CTAButton({ children, className, description, onClick }: React.P
 	return (<button className={className + " moba11y-button"}
 		onClick={onClick}
 		aria-label={description}
-		aria-pressed={false}
 	>{children}</button>)
 }
