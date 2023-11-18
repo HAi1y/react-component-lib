@@ -61,7 +61,7 @@ export function UIIcon({ label, onClick, classes = new Classes, href, a11yElemen
 		return (
 			<UIView classes={classes} a11yElement={a11yElement}>
 				{children}
-				<div>{label}</div>
+				<a href={href}>{label}</a>
 			</UIView>
 		)
 	}
