@@ -50,6 +50,7 @@ export function UIButtonNav({ text, fontStyle = FontStyle.body, classes = new Cl
 	if (!a11yElement) {
 		a11yElement = UIWindow.newElement()
 		a11yElement.label = text
+		a11yElement.traits.push(UIAccessibilityTrait.button)
 
 		if (!href) {
 			a11yElement.traits.push(UIAccessibilityTrait.notEnabled)
@@ -64,7 +65,7 @@ export function UIButtonNav({ text, fontStyle = FontStyle.body, classes = new Cl
 	classes.push(fontStyle)
 	return (
 		<UIView classes={classes} a11yElement={a11yElement}>
-			<button className="moba11y-button nav">{text}</button>
+			<a href={href} className="moba11y-button nav">{text}</a>
 		</UIView>
 	)
 }

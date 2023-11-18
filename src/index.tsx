@@ -57,3 +57,9 @@ export { MobA11yLogo }
 
 import { UIInput } from "./moba11y/ios-simulator/view/UIInput";
 export { UIInput }
+
+import { UIAccessibilityElement, UIAccessibilityElements } from "./moba11y/ios-simulator/view/UIAccessibilityElement";
+export { UIAccessibilityElement, UIAccessibilityElements }
+
+import { UIAccessibilityTrait, UIAccessibilityTraits } from "./moba11y/ios-simulator/view/UIAccessibilityTrait";
+export { UIAccessibilityTrait, UIAccessibilityTraits }
