@@ -666,10 +666,13 @@ div.simulator div.voiceover-controls {
 	flex-direction: column;
 }
 
-.ios.launcher-icon div {
+.ios.launcher-icon div,
+.ios.launcher-icon a {
 	overflow-wrap: break-word;
 	display: inline-block;
 	text-align: center;
+	text-decoration: none;
+	color: var(--color-on-background);
 }
 
 .ios.launcher-icon svg {

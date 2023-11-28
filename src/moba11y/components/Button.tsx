@@ -44,7 +44,7 @@ export function ToggleButton({ children, className, description, onClick }: Reac
 
 export interface ButtonProps {
 	onClick: () => any;
-	description?: string;
+	description: string;
 	className?: string;
 }
 

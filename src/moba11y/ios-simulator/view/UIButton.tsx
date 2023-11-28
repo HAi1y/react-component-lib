@@ -20,6 +20,7 @@ export function UIButton({ text, fontStyle = FontStyle.body, classes = new Class
 	if (!a11yElement) {
 		a11yElement = UIWindow.newElement()
 		a11yElement.label = text
+		a11yElement.traits.push(UIAccessibilityTrait.button)
 
 		if (!onClick) {
 			a11yElement.traits.push(UIAccessibilityTrait.notEnabled)
@@ -30,6 +31,7 @@ export function UIButton({ text, fontStyle = FontStyle.body, classes = new Class
 	}
 
 	classes.push(fontStyle)
+
 	return (
 		<UIView classes={classes} a11yElement={a11yElement}>
 			<button className="moba11y-button">{text}</button>
@@ -58,11 +60,12 @@ export function UIButtonNav({ text, fontStyle = FontStyle.body, classes = new Cl
 			a11yElement.actions.push(new UIAccessibilityCustomAction(
 				"Default", () => { if (window !== undefined && href) window.location.href = href }
 			))
-			a11yElement.hint = "Default action available."
+			a11yElement.hint = "Activate to follow link."
 		}
 	}
 
 	classes.push(fontStyle)
+
 	return (
 		<UIView classes={classes} a11yElement={a11yElement}>
 			<a href={href} className="moba11y-button nav">{text}</a>
