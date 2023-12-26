@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { Classes } from '../ios-simulator/view/Classes';
+import { Classes } from '../Classes';
 
 export interface ToggleButtonProps {
 	onClick: (isExpanded: boolean) => any;
